@@ -1,0 +1,11 @@
+# raw data stays local (32 MB, contains identifiers)
+data/
+*.xlsx
+*.csv
+# scratch / generated
+build/
+.work/
+__pycache__/
+.vercel/
+.DS_Store
+*backup*.json
