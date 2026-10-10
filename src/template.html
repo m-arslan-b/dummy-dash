@@ -7,190 +7,112 @@
 <style>
 :root{
   color-scheme:light;
-  --page-a:#ffe4cc;--page-b:#e6efff;--page-c:#f0e6ff;
-  --card:rgba(255,255,255,.78);--card-solid:#fcfcfb;
-  --ink:#0b0b0b;--ink2:#52514e;--muted:#7a7872;--grid:#e1e0d9;--axis:#c3c2b7;--border:rgba(11,11,11,.10);
-  --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--s5:#e87ba4;
-  --good:#0ca30c;--goodtext:#006300;--bad:#d03b3b;--badtext:#b02a2a;--warn:#fab219;
+  --bg1:#f7f9e9;--bg2:#e3eee6;--panel:#ffffff;
+  --ink:#16241b;--ink2:#4b5a50;--muted:#7b887f;--grid:#e4eadf;--axis:#c3cfc2;--line:#dbe4d6;
+  --pill:#e9edae;--pill-ink:#2a3517;--menu:#dfeadb;--accent:#1f6b4a;
+  --row-a:#f8fadf;--row-b:#f0f4cc;--row-hover:#e4ecab;
+  --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--s5:#8b6ad6;
+  --good:#0ca30c;--goodtext:#0a6e0a;--bad:#d03b3b;--badtext:#b02a2a;
+  --t0:#f4f9fa;--t1:#d7eaee;--t2:#a6ccd5;--t3:#6ea6b3;--t4:#3b7d8c;
   --h0:#fdeee3;--h1:#f9cdb0;--h2:#f1a074;--h3:#e0703d;--h4:#b3441a;
   --b0:#e3effc;--b1:#b7d3f6;--b2:#6da7ec;--b3:#2a78d6;--b4:#184f95;
-  --shadow:0 1px 2px rgba(20,20,40,.06),0 8px 24px rgba(40,40,90,.08);
-}
-@media (prefers-color-scheme:dark){
-  :root:where(:not([data-theme="light"])){
-    color-scheme:dark;
-    --page-a:#0a0d16;--page-b:#10131f;--page-c:#1a1226;
-    --card:rgba(26,26,25,.82);--card-solid:#1a1a19;
-    --ink:#ffffff;--ink2:#c3c2b7;--muted:#9a988f;--grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,.10);
-    --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;
-    --goodtext:#0ca30c;--badtext:#ec6a6a;
-    --h0:#2a2320;--h1:#5b3523;--h2:#8f4a27;--h3:#c4602f;--h4:#ec835a;
-    --b0:#1d2a3d;--b1:#1c4274;--b2:#256abf;--b3:#3987e5;--b4:#86b6ef;
-    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
-  }
-}
-:root[data-theme="dark"]{
-  color-scheme:dark;
-  --page-a:#0a0d16;--page-b:#10131f;--page-c:#1a1226;
-  --card:rgba(26,26,25,.82);--card-solid:#1a1a19;
-  --ink:#ffffff;--ink2:#c3c2b7;--muted:#9a988f;--grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,.10);
-  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;
-  --goodtext:#0ca30c;--badtext:#ec6a6a;
-  --h0:#2a2320;--h1:#5b3523;--h2:#8f4a27;--h3:#c4602f;--h4:#ec835a;
-  --b0:#1d2a3d;--b1:#1c4274;--b2:#256abf;--b3:#3987e5;--b4:#86b6ef;
-  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  --shadow:0 1px 2px rgba(30,60,40,.06),0 10px 28px rgba(40,80,50,.10);
 }
 *{box-sizing:border-box}
 html,body{margin:0}
-body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--page-a);
-  background-image:linear-gradient(135deg,var(--page-a),var(--page-b) 55%,var(--page-c));background-attachment:fixed;min-height:100vh}
-button{font:inherit;color:inherit;cursor:pointer}
-.app{display:grid;grid-template-columns:268px minmax(0,1fr);min-height:100vh}
-/* sidebar: dark in both themes */
-.side{position:sticky;top:0;height:100vh;overflow:auto;background:#17181c;color:#fff;padding:20px 18px 24px;display:flex;flex-direction:column;gap:18px;border-right:1px solid rgba(255,255,255,.06)}
-.brand{display:flex;align-items:center;gap:10px}
-.logo{width:38px;height:38px;border-radius:11px;background:conic-gradient(from 210deg,#ffb27a,#e87ba4,#6da7ec,#1baf7a,#ffb27a);display:grid;place-items:center}
-.logo i{display:block;width:18px;height:18px;border-radius:50%;background:#17181c}
-.brand b{font-size:18px;letter-spacing:.2px}.brand small{display:block;color:#a9abb3;font-size:11px;margin-top:1px}
-.welcome{background:rgba(255,255,255,.07);border-radius:12px;padding:12px 14px;font-size:13px;color:#d6d7dd}
-.welcome strong{display:block;font-size:16px;color:#fff;margin-top:2px}
-.fg h4{margin:0 0 8px;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#a9abb3;font-weight:600;display:flex;justify-content:space-between}
-.fg h4 em{font-style:normal;color:#ffb27a;text-transform:none;letter-spacing:0}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{border:1px solid rgba(255,255,255,.16);background:transparent;color:#e8e9ee;border-radius:999px;padding:5px 11px;font-size:12.5px;line-height:1.2}
-.chip:hover{background:rgba(255,255,255,.09)}
-.chip[aria-pressed="true"]{background:#ffb27a;border-color:#ffb27a;color:#1b1206;font-weight:600}
-.chip:focus-visible,.btn:focus-visible,.card button:focus-visible,input:focus-visible{outline:2px solid #6da7ec;outline-offset:2px}
-.dates{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
-.dates input{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:8px;color:#fff;padding:6px 8px;font:inherit;font-size:12.5px;color-scheme:dark}
-.seg{display:inline-flex;border:1px solid rgba(255,255,255,.16);border-radius:9px;overflow:hidden}
-.seg button{background:transparent;border:0;color:#e8e9ee;padding:5px 12px;font-size:12.5px}
-.seg button[aria-pressed="true"]{background:#ffb27a;color:#1b1206;font-weight:600}
-.row2{display:flex;gap:10px;align-items:center;justify-content:space-between;font-size:12.5px;color:#d6d7dd;margin-bottom:8px}
-.side .foot{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
-.btn{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff;border-radius:10px;padding:8px 12px;font-size:13px;flex:1}
-.btn:hover{background:rgba(255,255,255,.12)}
-/* main */
-main{padding:22px 26px 40px;min-width:0}
-.top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
-h1{margin:0;font-size:28px;font-weight:650;letter-spacing:-.01em}
-h1 span{display:block;font-size:20px;font-style:italic;font-weight:450;color:var(--ink2);margin-top:2px}
-.asof{color:var(--ink2);font-size:13.5px;text-align:right}
-.asof b{color:var(--ink);font-weight:600}
-.pills{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 4px;min-height:28px;align-items:center}
-.pill{display:inline-flex;gap:6px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:4px 6px 4px 11px;font-size:12.5px;box-shadow:var(--shadow)}
-.pill button{border:0;background:var(--grid);color:var(--ink);width:18px;height:18px;border-radius:50%;line-height:16px;padding:0;font-size:12px}
-.pill.clear{padding:4px 12px;cursor:pointer;color:var(--ink2)}
-.nofilt{color:var(--ink2);font-size:13px}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:12px 0 14px}
-.kpi{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px 14px 10px;box-shadow:var(--shadow);position:relative;overflow:hidden;backdrop-filter:blur(6px)}
-.kpi .lab{font-size:12.5px;color:var(--ink2)}
-.kpi .val{font-size:27px;font-weight:650;letter-spacing:-.01em;margin:2px 0 1px}
-.kpi .dl{font-size:12px;display:flex;gap:2px 5px;align-items:center;flex-wrap:wrap;color:var(--ink2);min-height:18px}
-.kpi .dl b{font-weight:650}
-.up-good{color:var(--goodtext)}.dn-bad{color:var(--badtext)}.flat{color:var(--ink2)}
-.kpi svg{display:block;margin-top:6px}
-.insights{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:14px}
-.ins{border-radius:16px;padding:13px 14px;border:1px solid var(--border);background:var(--card);box-shadow:var(--shadow);display:flex;gap:11px;font-size:13.5px;line-height:1.4;color:var(--ink2)}
-.ins .ic{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:16px;color:#fff}
-.ins b{color:var(--ink)}
-.ins h5{margin:0 0 2px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:650}
-.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:14px 16px 12px;box-shadow:var(--shadow);min-width:0;backdrop-filter:blur(6px);display:flex;flex-direction:column}
-.card header{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:6px}
-.card h3{margin:0;font-size:15.5px;font-weight:620}
-.card header p{margin:2px 0 0;font-size:12.5px;color:var(--ink2)}
-.tools{display:flex;gap:6px;align-items:center;flex:none}
-.tools .seg{border-color:var(--border)}
-.tools .seg button{color:var(--ink2);padding:3px 9px;font-size:12px}
-.tools .seg button[aria-pressed="true"]{background:var(--ink);color:var(--card-solid)}
-.tblbtn{border:1px solid var(--border);background:transparent;border-radius:8px;padding:3px 9px;font-size:12px;color:var(--ink2)}
-.tblbtn:hover{background:var(--grid)}
-.plot{flex:1;min-height:0;position:relative}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg1);background-image:linear-gradient(160deg,var(--bg1),var(--bg2));background-attachment:fixed;min-height:100vh}
+button,select,input{font:inherit;color:inherit}
+button{cursor:pointer}
+.app{padding:16px 22px 28px;max-width:1700px;margin:0 auto}
+.nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.brand{display:flex;align-items:center;gap:10px;margin-right:12px}
+.logo{width:40px;height:40px;border-radius:12px;background:conic-gradient(from 210deg,#ffb27a,#e87ba4,#6da7ec,#1baf7a,#ffb27a);display:grid;place-items:center}
+.logo i{display:block;width:18px;height:18px;border-radius:50%;background:var(--bg1)}
+.brand b{font-size:21px;letter-spacing:.2px;display:block;line-height:1.1}.brand small{color:var(--muted);font-size:11.5px}
+.tabs{display:flex;gap:12px;flex-wrap:wrap}
+.tab{border:2px solid transparent;background:var(--pill);color:var(--pill-ink);border-radius:999px;padding:11px 30px;font-size:17px;font-weight:700;box-shadow:var(--shadow);min-width:170px}
+.tab:hover{filter:brightness(.97)}
+.tab[aria-selected="true"]{background:#fff;border-color:var(--accent);color:var(--ink)}
+.asof{margin-left:auto;font-size:13px;color:var(--ink2);text-align:right}.asof b{color:var(--ink)}
+.shell{display:grid;grid-template-columns:230px minmax(0,1fr);gap:18px;align-items:start}
+.rail{display:flex;flex-direction:column;gap:8px;position:sticky;top:12px}
+.menu{display:flex;flex-direction:column;gap:7px}
+.mi{border:1px solid var(--line);background:var(--menu);border-radius:999px;padding:9px 14px;font-size:13.5px;font-weight:650;text-align:left;color:var(--ink2)}
+.mi:hover{background:#d3e2cd}
+.mi[aria-selected="true"]{background:#fff;color:var(--ink);border-color:var(--accent);box-shadow:var(--shadow)}
+.krow{display:flex;flex-direction:column;gap:6px}.kg{display:flex;flex-direction:column;gap:3px;min-width:0}
+.kh{font-size:12px;font-weight:700;color:var(--ink2);margin:6px 4px 0;letter-spacing:.02em}
+.kb{background:linear-gradient(180deg,#fff,#eef5e2);border:1px solid var(--line);border-radius:24px;padding:10px 14px;box-shadow:var(--shadow)}
+.kb .v{overflow-wrap:anywhere;font-size:23px;font-weight:750;letter-spacing:-.01em;line-height:1.15}
+.kb .v2{font-size:14px;color:var(--ink2);margin-top:1px}
+.panel{background:var(--panel);border-radius:30px;padding:16px 20px 18px;box-shadow:var(--shadow);min-width:0;border:1px solid var(--line)}
+.filters{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end;padding-bottom:12px;border-bottom:1px solid var(--grid)}
+.f{display:flex;flex-direction:column;gap:3px;font-size:11.5px;font-weight:700;color:var(--ink2)}
+.f select,.f input{border:1px solid var(--axis);background:#fff;border-radius:8px;padding:5px 8px;font-size:13px;font-weight:500;min-width:112px;color:var(--ink)}
+.f .pair{display:flex;gap:6px;align-items:center}.f .pair input{min-width:0;width:128px}
+.fbtn{border:1px solid var(--axis);background:#fff;border-radius:9px;padding:6px 12px;font-size:13px;font-weight:650}
+.fbtn:hover{background:var(--row-a)}
+.fbtn.dl{border-color:var(--accent);color:var(--accent)}
+.f[hidden]{display:none}
+.fgrow{margin-left:auto;display:flex;gap:8px;align-items:flex-end}
+.vhead{padding:14px 2px 10px}.vhead h2{margin:0;font-size:21px;letter-spacing:-.01em}.vhead p{margin:3px 0 0;color:var(--ink2);font-size:13.5px;max-width:80ch}
+.vbody{min-width:0}
+.tw{overflow:auto;max-height:calc(100vh - 360px);min-height:300px;border:1px solid var(--grid);border-radius:14px}
+table.t{border-collapse:separate;border-spacing:0;width:100%;font-size:12.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.t th{position:sticky;top:0;background:#fff;color:var(--ink);font-weight:700;padding:8px 10px;text-align:right;border-bottom:2px solid var(--axis);z-index:2;line-height:1.2}
+.t th:first-child,.t td:first-child{text-align:left;position:sticky;left:0;z-index:1}
+.t th:first-child{z-index:3}
+.t td{padding:5px 10px;text-align:right;border-bottom:1px solid #e8eed2}
+.t tbody tr:nth-child(odd) td{background:var(--row-a)}.t tbody tr:nth-child(even) td{background:var(--row-b)}
+.t tbody tr:hover td{background:var(--row-hover)}
+.t td:first-child{font-weight:600;background:inherit}
+.t tbody tr.z td{color:var(--muted)}
+.t tfoot td{position:sticky;bottom:0;background:#fff!important;font-weight:800;border-top:2px solid var(--axis);z-index:2}
+.t td.hl{color:#0e2a31}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grid2 .wide{grid-column:1/-1}
+.cc{border:1px solid var(--grid);border-radius:18px;padding:12px 14px;min-width:0;background:#fff}
+.cc h4{margin:0;font-size:14.5px}.cc p{margin:2px 0 6px;font-size:12.5px;color:var(--ink2)}
+.seg{display:inline-flex;border:1px solid var(--axis);border-radius:9px;overflow:hidden;margin-left:8px;vertical-align:middle}
+.seg button{background:#fff;border:0;padding:3px 10px;font-size:12px;color:var(--ink2)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.plot{position:relative;min-width:0}
 .plot svg{display:block;max-width:100%;overflow:visible}
-.tbl{display:none;overflow:auto;max-height:340px;font-size:12.5px}
-.card.show-table .plot,.card.show-table .legend{display:none}
-.card.show-table .tbl{display:block}
-.tbl table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
-.tbl th,.tbl td{text-align:right;padding:5px 8px;border-bottom:1px solid var(--grid)}
-.tbl th:first-child,.tbl td:first-child{text-align:left}
-.tbl th{color:var(--ink2);font-weight:600;position:sticky;top:0;background:var(--card-solid)}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--ink2);margin-top:6px}
 .legend span{display:inline-flex;gap:6px;align-items:center}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:3px}
 .legend i.ln{height:3px;width:16px;border-radius:2px}
-.note{font-size:11.5px;color:var(--muted);margin-top:4px}
-.c8{grid-column:span 8}.c7{grid-column:span 7}.c6{grid-column:span 6}.c5{grid-column:span 5}.c4{grid-column:span 4}.c12{grid-column:span 12}
-.empty{display:grid;place-items:center;height:160px;color:var(--ink2);font-size:13px}
+.note{font-size:12px;color:var(--muted);margin-top:6px}
+.empty{display:grid;place-items:center;min-height:150px;color:var(--ink2);font-size:13.5px;text-align:center;padding:10px}
 .hot{cursor:pointer}
-#tip{position:fixed;z-index:50;pointer-events:none;background:var(--card-solid);color:var(--ink);border:1px solid var(--border);border-radius:10px;padding:8px 10px;font-size:12.5px;box-shadow:0 6px 24px rgba(0,0,0,.25);opacity:0;transition:opacity .08s;max-width:260px;line-height:1.35}
-#tip.on{opacity:1}
-#tip .v{font-size:14px;font-weight:650}
-#tip .k{color:var(--ink2)}
-#tip .r{display:flex;gap:7px;align-items:center;margin-top:2px}
-#tip .r i{display:inline-block;width:12px;height:3px;border-radius:2px;flex:none}
 .dim{opacity:.35}
-.busy .plot{opacity:.6}
+#tip{position:fixed;z-index:50;pointer-events:none;background:#fff;color:var(--ink);border:1px solid var(--axis);border-radius:10px;padding:8px 10px;font-size:12.5px;box-shadow:0 6px 24px rgba(20,50,30,.2);opacity:0;transition:opacity .08s;max-width:270px;line-height:1.35}
+#tip.on{opacity:1}#tip .v{font-size:14px;font-weight:700}#tip .k{color:var(--ink2)}
+#tip .r{display:flex;gap:7px;align-items:center;margin-top:2px}#tip .r i{display:inline-block;width:12px;height:3px;border-radius:2px;flex:none}
+:focus-visible{outline:2px solid var(--s1);outline-offset:2px}
 svg text{font-family:inherit}
-@media (max-width:1180px){.c8,.c7,.c6,.c5,.c4{grid-column:span 12}}
-@media (max-width:900px){
-  .app{grid-template-columns:1fr}
-  .side{position:static;height:auto}
-  main{padding:16px}
-  h1{font-size:23px}.asof{text-align:left}
-}
+@media (max-width:1100px){.shell{grid-template-columns:1fr}.rail{position:static}.menu{flex-direction:row;overflow-x:auto;padding-bottom:4px}.mi{white-space:nowrap;flex:none}.krow{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}.grid2{grid-template-columns:1fr}.asof{margin-left:0;text-align:left}}
+@media (max-width:640px){.app{padding:12px 14px 24px}.tab{min-width:0;flex:1;padding:10px 12px;font-size:15px}.panel{border-radius:22px;padding:12px 12px 14px}.f select,.f input{min-width:96px}.f .pair input{width:118px}.fgrow{margin-left:0}}
 </style>
 </head>
 <body>
 <div class="app">
-<aside class="side" aria-label="Filters">
-  <div class="brand"><div class="logo"><i></i></div><div><b>Nano Lens</b><small>Islamic finance · loan book</small></div></div>
-  <div class="welcome">Welcome,<strong>Guest</strong></div>
-  <div class="fg" id="g-date"><h4>Origination window <em id="dateTxt"></em></h4>
-    <div class="chips" id="presets"></div>
-    <div class="dates"><input type="date" id="dFrom" aria-label="From date"><input type="date" id="dTo" aria-label="To date"></div>
-  </div>
-  <div class="fg"><h4>Loan status</h4><div class="chips" id="f-st"></div></div>
-  <div class="fg"><h4>Days past due</h4><div class="chips" id="f-dpd"></div></div>
-  <div class="fg"><h4>Loan size (PKR)</h4><div class="chips" id="f-amt"></div></div>
-  <div class="fg"><h4>Tenor</h4><div class="chips" id="f-term"></div></div>
-  <div class="fg"><h4>Borrower history</h4><div class="chips" id="f-ten"></div></div>
-  <div class="fg"><h4>Behaviour</h4>
-    <div class="row2">Slider used <span class="seg" id="f-slider"></span></div>
-    <div class="row2">Cool-off exit <span class="seg" id="f-cool"></span></div>
-  </div>
-  <div class="foot"><button class="btn" id="reset">Reset all</button><button class="btn" id="theme" aria-label="Toggle light or dark theme">Theme: auto</button></div>
-</aside>
-<main>
-  <div class="top">
-    <h1>Loan Portfolio Performance<span>Executive view</span></h1>
+  <div class="nav">
+    <div class="brand"><div class="logo"><i></i></div><div><b>Nano Lens</b><small>Islamic finance · loan book</small></div></div>
+    <div class="tabs" id="tabs" role="tablist" aria-label="Dashboard sections"></div>
     <div class="asof">Data as of <b>08 Jul 2026</b><br><span id="rowTxt"></span></div>
   </div>
-  <div class="pills" id="pills" aria-live="polite"></div>
-  <section class="kpis" id="kpis" aria-label="Key figures"></section>
-  <section class="insights" id="ins" aria-label="What jumps out"></section>
-  <section class="grid">
-    <section class="card c8" id="c-pulse"><header><div><h3>Origination pulse</h3><p>How much are we lending each day? Drag across the chart to set the window.</p></div>
-      <div class="tools"><span class="seg" id="pulseMetric"></span><button class="tblbtn">Table</button></div></header>
-      <div class="plot"></div><div class="legend"></div><div class="tbl"></div></section>
-    <section class="card c4" id="c-status"><header><div><h3>Where the book stands</h3><p>Principal by loan status. Click to filter.</p></div><div class="tools"><button class="tblbtn">Table</button></div></header>
-      <div class="plot"></div><div class="tbl"></div></section>
-    <section class="card c6" id="c-vintage"><header><div><h3>Vintage curves</h3><p>Default rate by weekly origination cohort, measured only once loans are old enough.</p></div><div class="tools"><button class="tblbtn">Table</button></div></header>
-      <div class="plot"></div><div class="legend"></div><div class="note" id="vNote"></div><div class="tbl"></div></section>
-    <section class="card c6" id="c-cliff"><header><div><h3>The first-loan cliff</h3><p>Default rate by how many loans the borrower has taken. Click a group to filter.</p></div><div class="tools"><button class="tblbtn">Table</button></div></header>
-      <div class="plot"></div><div class="legend"></div><div class="tbl"></div></section>
-    <section class="card c5" id="c-risk"><header><div><h3>Risk map</h3><p>7-day default rate by loan size and tenor. Click a cell to filter.</p></div><div class="tools"><button class="tblbtn">Table</button></div></header>
-      <div class="plot"></div><div class="legend"></div><div class="tbl"></div></section>
-    <section class="card c7" id="c-dpd"><header><div><h3>Aging ladder</h3><p>Principal by days-past-due bucket. Click a bar to filter.</p></div><div class="tools"><button class="tblbtn">Table</button></div></header>
-      <div class="plot"></div><div class="tbl"></div></section>
-    <section class="card c8" id="c-run"><header><div><h3>Collections runway</h3><p>Money still owed on open loans, by the week it falls due.</p></div><div class="tools"><button class="tblbtn">Table</button></div></header>
-      <div class="plot"></div><div class="legend"></div><div class="tbl"></div></section>
-    <section class="card c4" id="c-lev"><header><div><h3>Behaviour levers</h3><p>Loans where the borrower used the amount slider vs not. Click to filter.</p></div><div class="tools"><button class="tblbtn">Table</button></div></header>
-      <div class="plot"></div><div class="legend"></div><div class="tbl"></div></section>
-    <section class="card c12" id="c-heart"><header><div><h3>Demand heartbeat</h3><p>When do borrowers apply? Loans by weekday and hour (local time).</p></div><div class="tools"><button class="tblbtn">Table</button></div></header>
-      <div class="plot"></div><div class="legend"></div><div class="tbl"></div></section>
-  </section>
-</main>
+  <div class="shell">
+    <aside class="rail" aria-label="Views and key figures">
+      <nav class="menu" id="menu" role="tablist" aria-label="Views"></nav>
+      <div class="krow" id="kpis"></div>
+    </aside>
+    <section class="panel">
+      <div class="filters" id="filters"></div>
+      <div class="vhead"><h2 id="vt"></h2><p id="vd"></p></div>
+      <div class="vbody" id="view"></div>
+    </section>
+  </div>
 </div>
 <div id="tip" role="tooltip"></div>
 <script>
@@ -198,363 +120,345 @@ const RAW=/*__DATA__*/null;
 (function(){
 "use strict";
 /* ---------- data ---------- */
-const N=RAW.n, ASOF=RAW.asof, NDAY=ASOF; // days 0..ASOF-1
+const N=RAW.n,ASOF=RAW.asof,NDAY=ASOF;
 function dec(k,T){const b=atob(RAW.c[k]);const u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return T===Uint8Array?u:new T(u.buffer);}
-const day=dec('day',Uint8Array),hour=dec('hour',Uint8Array),st=dec('st',Uint8Array),dpd=dec('dpd',Uint8Array),
-amt=dec('amt',Uint16Array),term=dec('term',Uint8Array),ten=dec('ten',Uint8Array),fl=dec('fl',Uint8Array),
-profit=dec('profit',Uint16Array),repay=dec('repay',Uint32Array),rec=dec('rec',Uint32Array),due=dec('due',Uint8Array);
-const aB=new Uint8Array(N),tB=new Uint8Array(N),nB=new Uint8Array(N);
-for(let i=0;i<N;i++){const a=amt[i];aB[i]=a<5000?0:a<10000?1:a<20000?2:a<30000?3:4;const t=term[i];tB[i]=t<=18?0:t<=24?1:t<=30?2:3;const n=ten[i];nB[i]=n<=1?0:n<=3?1:n<=7?2:n<=15?3:4;}
+const day=dec('day',Uint8Array),hour=dec('hour',Uint8Array),st=dec('st',Uint8Array),dpd=dec('dpd',Uint8Array),amt=dec('amt',Uint16Array),
+term=dec('term',Uint8Array),ten=dec('ten',Uint8Array),fl=dec('fl',Uint8Array),profit=dec('profit',Uint16Array),repay=dec('repay',Uint32Array),
+rec=dec('rec',Uint32Array),due=dec('due',Uint8Array),disb=dec('disb',Uint16Array),paid=dec('paid',Uint8Array),lagh=dec('lagh',Uint8Array),dpdd=dec('dpdd',Uint8Array);
+const aB=new Uint8Array(N),tB=new Uint8Array(N),nB=new Uint8Array(N),fB=new Uint8Array(N);
+const FB=21;
+for(let i=0;i<N;i++){const a=amt[i];aB[i]=a<5000?0:a<10000?1:a<20000?2:a<30000?3:4;fB[i]=Math.min(FB-1,Math.max(0,Math.floor((a-1)/2000)));
+ const t=term[i];tB[i]=t<=18?0:t<=24?1:t<=30?2:3;const n=ten[i];nB[i]=n<=1?0:n<=3?1:n<=7?2:n<=15?3:4;}
 const D0=Date.UTC(2026,3,13),MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const dDate=i=>new Date(D0+i*864e5);
-const dFmt=i=>{const d=dDate(i);return String(d.getUTCDate()).padStart(2,'0')+' '+MON[d.getUTCMonth()];};
-const dIso=i=>dDate(i).toISOString().slice(0,10);
-const isoDay=s=>Math.round((Date.parse(s+'T00:00:00Z')-D0)/864e5);
-const L={st:['Active','In arrears','Closed'],dpd:['DPD 0','DPD 7','DPD 15','DPD 21','DPD 30','DPD 30+'],
- amt:['<5K','5–10K','10–20K','20–30K','30K+'],term:['≤18d','19–24d','25–30d','31d+'],ten:['1st loan','2–3 loans','4–7 loans','8–15 loans','16+ loans']};
-const DIMS=['st','dpd','amt','term','ten'];
-const COL={st:st,dpd:dpd,amt:aB,term:tB,ten:nB};
-/* ---------- state ---------- */
-const blank=()=>({from:0,to:NDAY-1,st:new Set(),dpd:new Set(),amt:new Set(),term:new Set(),ten:new Set(),slider:null,cool:null});
-let S=blank();
-let theme=null;try{theme=localStorage.getItem('nl-theme')}catch(e){}
-if(theme)document.documentElement.dataset.theme=theme;
-let mcache={};
-function mask(excl){
-  const ex=new Set(excl||[]);const key=[...ex].sort().join('|');
-  if(mcache[key])return mcache[key];
-  const m=new Uint8Array(N),f=S;
-  const useDate=!ex.has('date'),act=DIMS.filter(d=>!ex.has(d)&&f[d].size);
-  const sl=ex.has('slider')?null:f.slider,co=ex.has('cool')?null:f.cool;
-  for(let i=0;i<N;i++){
-    if(useDate&&(day[i]<f.from||day[i]>f.to))continue;
-    let ok=1;for(let k=0;k<act.length;k++){const d=act[k];if(!f[d].has(COL[d][i])){ok=0;break;}}
-    if(!ok)continue;
-    if(sl!==null&&((fl[i]>>6)&1)!==sl)continue;
-    if(co!==null&&((fl[i]>>7)&1)!==co)continue;
-    m[i]=1;
-  }
-  return mcache[key]=m;
-}
-const noFilter=()=>{const m=new Uint8Array(N).fill(1);return m;};
+const dDate=i=>new Date(D0+i*864e5),dFmt=i=>{const d=dDate(i);return String(d.getUTCDate()).padStart(2,'0')+' '+MON[d.getUTCMonth()];};
+const dIso=i=>dDate(i).toISOString().slice(0,10),isoDay=s=>Math.round((Date.parse(s+'T00:00:00Z')-D0)/864e5);
+const L={st:['Active','In arrears','Closed'],dpd:['DPD 0','DPD 7','DPD 15','DPD 21','DPD 30','DPD 30+'],amt:['<5K','5–10K','10–20K','20–30K','30K+'],
+ term:['≤18 days','19–24 days','25–30 days','31+ days'],ten:['1st loan','2–3 loans','4–7 loans','8–15 loans','16+ loans']};
+const fLab=k=>k===FB-1?'40,001+':((k*2000+1).toLocaleString('en-US')+'–'+((k+1)*2000).toLocaleString('en-US'));
 /* ---------- helpers ---------- */
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const money=n=>{const a=Math.abs(n);return a>=1e9?(n/1e9).toFixed(2)+'B':a>=1e6?(n/1e6).toFixed(a>=1e8?0:1)+'M':a>=1e3?(n/1e3).toFixed(a>=1e5?0:1)+'K':String(Math.round(n));};
 const num=n=>Math.round(n).toLocaleString('en-US');
-const pct=(x,d=1)=>x==null||isNaN(x)?'–':(x*100).toFixed(d)+'%';
+const money=n=>{const a=Math.abs(n);return a>=1e9?(n/1e9).toFixed(2)+'B':a>=1e6?(n/1e6).toFixed(a>=1e8?0:1)+'M':a>=1e3?(n/1e3).toFixed(a>=1e5?0:1)+'K':String(Math.round(n));};
+const pc=(x,d=1)=>x==null||!isFinite(x)?'–':(x*100).toFixed(d)+'%';
+const div=(a,b)=>b>0?a/b:null;
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
-const hex2rgb=h=>{h=h.replace('#','');return[0,2,4].map(i=>parseInt(h.slice(i,i+2),16));};
-function ramp(names,t){const st=names.map(n=>hex2rgb(css(n)));t=Math.max(0,Math.min(1,t))*(st.length-1);const i=Math.min(Math.floor(t),st.length-2),f=t-i;const c=st[i].map((v,k)=>Math.round(v+(st[i+1][k]-v)*f));return c;}
-const rgb=c=>`rgb(${c[0]},${c[1]},${c[2]})`;
-const lum=c=>(0.299*c[0]+0.587*c[1]+0.114*c[2])/255;
-const HEAT=['--h0','--h1','--h2','--h3','--h4'],BLU=['--b0','--b1','--b2','--b3','--b4'];
-function niceScale(v){if(!(v>0))return{max:1,step:.25};const raw=v/4,p=Math.pow(10,Math.floor(Math.log10(raw))),f=raw/p,st=(f<=1?1:f<=2?2:f<=5?5:10)*p;return{max:Math.ceil(v/st-1e-9)*st,step:st};}
-function niceMax(v){return niceScale(v).max;}
-function ticks(max){const st=niceScale(max).step,o=[];for(let t=0;t<=max+st*1e-6;t+=st)o.push(t);return o;}
+const hex=h=>{h=h.replace('#','');return[0,2,4].map(i=>parseInt(h.slice(i,i+2),16));};
+function ramp(names,t){const s=names.map(n=>hex(css(n)));t=Math.max(0,Math.min(1,t))*(s.length-1);const i=Math.min(Math.floor(t),s.length-2),f=t-i;return s[i].map((v,k)=>Math.round(v+(s[i+1][k]-v)*f));}
+const rgb=c=>`rgb(${c[0]},${c[1]},${c[2]})`,lum=c=>(0.299*c[0]+0.587*c[1]+0.114*c[2])/255;
+const TEAL=['--t0','--t1','--t2','--t3','--t4'],HEAT=['--h0','--h1','--h2','--h3','--h4'],BLU=['--b0','--b1','--b2','--b3','--b4'];
+function scale(v){if(!(v>0))return{max:1,step:.25};const raw=v/4,p=Math.pow(10,Math.floor(Math.log10(raw))),f=raw/p,s=(f<=1?1:f<=2?2:f<=5?5:10)*p;return{max:Math.ceil(v/s-1e-9)*s,step:s};}
+function ticks(max){const s=scale(max).step,o=[];for(let t=0;t<=max+s*1e-6;t+=s)o.push(t);return o;}
 const tipEl=document.getElementById('tip');
-const tipAttr=h=>' data-tip="'+esc(h)+'"';
-const tipRow=(color,k,v)=>`<div class="r"><i style="background:${color}"></i><span class="v">${v}</span> <span class="k">${k}</span></div>`;
-function showTip(html,x,y){tipEl.innerHTML=html;tipEl.classList.add('on');const r=tipEl.getBoundingClientRect();let l=x+14,t=y+14;if(l+r.width>innerWidth-8)l=x-r.width-14;if(t+r.height>innerHeight-8)t=y-r.height-14;tipEl.style.left=Math.max(6,l)+'px';tipEl.style.top=Math.max(6,t)+'px';}
+const ta=h=>' data-tip="'+esc(h)+'"';
+const trow=(c,k,v)=>`<div class="r"><i style="background:${c}"></i><span class="v">${v}</span> <span class="k">${k}</span></div>`;
+function showTip(h,x,y){tipEl.innerHTML=h;tipEl.classList.add('on');const r=tipEl.getBoundingClientRect();let l=x+14,t=y+14;if(l+r.width>innerWidth-8)l=x-r.width-14;if(t+r.height>innerHeight-8)t=y-r.height-14;tipEl.style.left=Math.max(6,l)+'px';tipEl.style.top=Math.max(6,t)+'px';}
 const hideTip=()=>tipEl.classList.remove('on');
 document.addEventListener('pointermove',e=>{const t=e.target.closest&&e.target.closest('[data-tip]');if(t&&t.dataset.tip)showTip(t.dataset.tip,e.clientX,e.clientY);else if(!e.target.closest||!e.target.closest('[data-live]'))hideTip();});
 document.addEventListener('focusin',e=>{const t=e.target.closest&&e.target.closest('[data-tip]');if(t){const r=t.getBoundingClientRect();showTip(t.dataset.tip,r.left+r.width/2,r.top);}});
 document.addEventListener('focusout',hideTip);
-const plotW=id=>Math.max(260,document.querySelector('#'+id+' .plot').clientWidth||300);
-const plotEl=id=>document.querySelector('#'+id+' .plot');
-function legend(id,items){const el=document.querySelector('#'+id+' .legend');if(!el)return;el.innerHTML=items.map(i=>`<span><i class="${i.ln?'ln':''}" style="background:${i.c}"></i>${i.t}</span>`).join('');}
-function table(id,head,rows){const el=document.querySelector('#'+id+' .tbl');el.innerHTML='<table><thead><tr>'+head.map(h=>'<th>'+h+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('')+'</tbody></table>';}
-const empty=(id,msg)=>{plotEl(id).innerHTML='<div class="empty">'+(msg||'No loans match these filters')+'</div>';};
-function toggle(d,v){const s=S[d];if(s.size===1&&s.has(v))s.clear();else{s.clear();s.add(v);}render();}
-/* ---------- aggregates ---------- */
-function perDay(m,metric){const a=new Float64Array(NDAY);for(let i=0;i<N;i++)if(m[i]){const d=day[i];if(d>=NDAY)continue;a[d]+=metric===0?1:metric===1?amt[i]:profit[i];}return a;}
-function kpiAgg(m,from,to){let n=0,pr=0,pf=0,pRepay=0,pRec=0,m30=0,d30=0,arr=0,tot=0;
-  for(let i=0;i<N;i++)if(m[i]){if(from!=null&&(day[i]<from||day[i]>to))continue;n++;pr+=amt[i];pf+=profit[i];if(due[i]<ASOF){pRepay+=repay[i];pRec+=rec[i];}
-    const f=fl[i];if((f>>5)&1){m30++;d30+=(f>>2)&1;}if(st[i]===1)arr+=amt[i];}
-  return{n,pr,pf,coll:pRepay?pRec/pRepay:null,def30:m30>=100?d30/m30:null,m30,arr,arrShare:pr?arr/pr:null,marg:pr?pf/pr:null};}
-function weekly(m,fn){const W=Math.ceil(NDAY/7),a=[];for(let w=0;w<W;w++)a.push({n:0,a:0,b:0,c:0});
-  for(let i=0;i<N;i++)if(m[i]){const w=(day[i]/7)|0;fn(a[w],i);}return a;}
-/* ---------- KPIs ---------- */
-let book=null;
-function spark(vals,color,w=150,h=30){const v=vals.map(x=>x==null?NaN:x);const ok=v.filter(x=>!isNaN(x));if(ok.length<2)return'';const mn=Math.min(...ok),mx=Math.max(...ok),rg=mx-mn||1;
-  let d='',pen=false;v.forEach((x,i)=>{if(isNaN(x)){pen=false;return;}const px=2+i*(w-4)/(v.length-1),py=h-3-(x-mn)/rg*(h-8);d+=(pen?'L':'M')+px.toFixed(1)+' '+py.toFixed(1);pen=true;});
-  return`<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-hidden="true"><path d="${d}" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
-function delta(cur,prev,goodUp,label,asPP){
-  if(cur==null||prev==null||(!asPP&&prev===0))return`<span class="flat">${label?label:'–'}</span>`;
-  const ch=asPP?(cur-prev)*100:(cur-prev)/prev*100;const up=ch>0.0049;const dn=ch<-0.0049;
-  if(!up&&!dn)return`<span class="flat">▬ 0.0${asPP?' pp':'%'}</span>${label?' '+label:''}`;
-  const good=(up&&goodUp)||(dn&&!goodUp);const cls=good?'up-good':'dn-bad';
-  return`<b class="${cls}">${up?'▲':'▼'} ${Math.abs(ch).toFixed(1)}${asPP?' pp':'%'}</b> <span>${label}</span>`;}
-function renderKpis(){
-  const m=mask(),M0=mask(['date']),a=kpiAgg(m);
-  if(!book)book=kpiAgg(noFilter());
-  const dayN=perDay(M0,0),dayP=perDay(M0,1),dayF=perDay(M0,2);
-  const win=(arr,from,to)=>{let s=0;for(let i=Math.max(0,from);i<=to;i++)s+=arr[i];return s;};
-  const to=S.to;const have=to-13>=0;
-  const vd=arr=>have?delta(win(arr,to-6,to),win(arr,to-13,to-7),true,'vs prior 7d'):'<span class="flat">window &lt; 14d</span>';
-  const ma=arr=>{const o=[];for(let i=0;i<arr.length;i++){let s=0,c=0;for(let k=Math.max(0,i-6);k<=i;k++){s+=arr[k];c++;}o.push(s/c);}return o;};
-  const wk=weekly(M0,(o,i)=>{o.n++;if(due[i]<ASOF){o.a+=repay[i];o.b+=rec[i];}const f=fl[i];if((f>>5)&1){o.c++;o.d=(o.d||0)+((f>>2)&1);}if(st[i]===1)o.arr=(o.arr||0)+amt[i];o.pr=(o.pr||0)+amt[i];});
-  const wColl=wk.map(o=>o.a>5e6?o.b/o.a:null),wDef=wk.map(o=>o.c>=100?(o.d||0)/o.c:null),wArr=wk.map(o=>o.pr?(o.arr||0)/o.pr:null);
-  const filtered=active().length>0;const vsb=filtered?'vs whole book':'book average';
-  const cards=[
-   {lab:'Loans originated',val:num(a.n),dl:vd(dayN),sp:spark(ma([...dayN]),css('--s1'))},
-   {lab:'Principal disbursed',val:'PKR '+money(a.pr),dl:vd(dayP),sp:spark(ma([...dayP]),css('--s1'))},
-   {lab:'Margin earned',val:'PKR '+money(a.pf),dl:vd(dayF)+' · '+pct(a.marg)+' margin',sp:spark(ma([...dayF]),css('--s3'))},
-   {lab:'Collection rate (past-due loans)',val:pct(a.coll),dl:filtered?delta(a.coll,book.coll,true,vsb,true):'<span class="flat">'+vsb+'</span>',sp:spark(wColl,css('--s3'))},
-   {lab:'30-day default rate',val:pct(a.def30),dl:a.def30==null?'<span class="flat">too few matured loans</span>':(filtered?delta(a.def30,book.def30,false,vsb,true):'<span class="flat">'+vsb+'</span>'),sp:spark(wDef,css('--bad'))},
-   {lab:'Principal sitting in arrears',val:'PKR '+money(a.arr),dl:a.arrShare==null?'':'<span>'+pct(a.arrShare)+' of principal</span>'+(filtered?' · '+delta(a.arrShare,book.arrShare,false,vsb,true):''),sp:spark(wArr,css('--bad'))}
-  ];
-  document.getElementById('kpis').innerHTML=cards.map(c=>`<div class="kpi"><div class="lab">${c.lab}</div><div class="val">${c.val}</div><div class="dl">${c.dl}</div>${c.sp}</div>`).join('');
-  window.__a=a;
+const vw=el=>Math.max(260,el.clientWidth||300);
+const emptyHtml=m=>'<div class="empty">'+(m||'No loans match the current filters.')+'</div>';
+function legendHtml(items){return '<div class="legend">'+items.map(i=>`<span><i class="${i.ln?'ln':''}" style="background:${i.c}"></i>${i.t}</span>`).join('')+'</div>';}
+const keyAct=(n,f)=>{n.onclick=f;n.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();f();}};};
+/* ---------- state & mask ---------- */
+const blank=()=>({from:0,to:NDAY-1,pfrom:null,pto:null,term:null,amt:null,ten:null,st:null,dpd:null,slider:null});
+let S=blank(),tab='disbursement',viewId={disbursement:'breakdown',recovery:'breakdown',risk:'breakdown'};
+let mcache={};
+function mask(excl){const ex=new Set(excl||[]),key=[...ex].sort().join('|');if(mcache[key])return mcache[key];
+ const m=new Uint8Array(N),f=S,useDate=!ex.has('date'),usePaid=tab==='recovery'&&f.pfrom!=null&&!ex.has('paid');
+ const t=ex.has('term')?null:f.term,a=ex.has('amt')?null:f.amt,n=ex.has('ten')?null:f.ten,s=ex.has('st')?null:f.st,d=ex.has('dpd')?null:f.dpd,sl=ex.has('slider')?null:f.slider;
+ for(let i=0;i<N;i++){
+  if(useDate&&(day[i]<f.from||day[i]>f.to))continue;
+  if(usePaid&&(paid[i]===255||paid[i]<f.pfrom||paid[i]>f.pto))continue;
+  if(t!==null&&tB[i]!==t)continue;if(a!==null&&aB[i]!==a)continue;if(n!==null&&nB[i]!==n)continue;
+  if(s!==null&&st[i]!==s)continue;if(d!==null&&dpd[i]!==d)continue;if(sl!==null&&((fl[i]>>6)&1)!==sl)continue;
+  m[i]=1;}
+ return mcache[key]=m;}
+/* ---------- aggregation ---------- */
+const mk=()=>({n:0,disb:0,amt:0,repay:0,profit:0,rec:0,termSum:0,rep:0,slider:0,cool:0,coolPaid:0,fast:0,soldN:0,due:0,repayDue:0,recDue:0,recN:0,timelyN:0,timelyAmt:0,overN:0,overAmt:0,
+ nplN:0,nplRepay:0,nplRec:0,nplClosed:0,m7:0,d7:0,m15:0,d15:0,m30:0,d30:0,arrN:0,arrPrin:0,dpd30Prin:0,dpd30N:0,dpdSum:0,dpdN:0});
+function accum(g,i){g.n++;g.disb+=disb[i];g.amt+=amt[i];g.repay+=repay[i];g.profit+=profit[i];g.rec+=rec[i];g.termSum+=term[i];
+ if(ten[i]>1)g.rep++;const f=fl[i];if((f>>6)&1)g.slider++;
+ if(lagh[i]!==255){g.soldN++;if(lagh[i]<=3)g.fast++;}
+ if(due[i]<ASOF){g.due++;g.repayDue+=repay[i];g.recDue+=rec[i];if(rec[i]>0)g.recN++;
+  if(paid[i]!==255){if(paid[i]<=due[i]){g.timelyN++;g.timelyAmt+=rec[i];}else{g.overN++;g.overAmt+=rec[i];}}}
+ if((f>>7)&1){g.cool++;g.coolPaid+=rec[i];}
+ if((f>>2)&1){g.nplN++;g.nplRepay+=repay[i];g.nplRec+=rec[i];if(st[i]===2)g.nplClosed++;}
+ if((f>>3)&1){g.m7++;g.d7+=f&1;}if((f>>4)&1){g.m15++;g.d15+=(f>>1)&1;}if((f>>5)&1){g.m30++;g.d30+=(f>>2)&1;}
+ if(st[i]===1){g.arrN++;g.arrPrin+=amt[i];g.dpdSum+=dpdd[i];g.dpdN++;}
+ if(dpd[i]===5){g.dpd30Prin+=amt[i];g.dpd30N++;}}
+function group(m,K,key){const a=Array.from({length:K},mk);for(let i=0;i<N;i++)if(m[i]){const k=key(i);if(k>=0&&k<K)accum(a[k],i);}return a;}
+function total(m){const g=mk();for(let i=0;i<N;i++)if(m[i])accum(g,i);return g;}
+/* ---------- generic table ---------- */
+let CSV={head:[],rows:[],name:'export'};
+function table(host,labels,aggs,tot,cols,first){
+ const mx=cols.map(c=>c.heat?Math.max(1e-12,...aggs.map(g=>{const v=c.v(g);return v==null?0:v;})):1);
+ const body=aggs.map((g,r)=>`<tr class="${g.n?'':'z'}"><td>${labels[r]}</td>${cols.map((c,j)=>{const v=c.v(g);let sty='',cls='';
+   if(c.heat&&v!=null&&g.n){const col=ramp(c.heat==='o'?HEAT:TEAL,v/mx[j]);sty=` style="background:${rgb(col)}"`;cls=lum(col)<.5?'':' class="hl"';}
+   return `<td${sty}${cls}>${v==null?'–':c.f(v)}</td>`;}).join('')}</tr>`).join('');
+ const foot=`<tr><td>Total</td>${cols.map(c=>{const v=c.v(tot);return `<td>${v==null?'–':c.f(v)}</td>`;}).join('')}</tr>`;
+ host.innerHTML=`<div class="tw"><table class="t"><thead><tr><th>${first}</th>${cols.map(c=>`<th>${c.h}</th>`).join('')}</tr></thead><tbody>${body}</tbody><tfoot>${foot}</tfoot></table></div>`;
+ CSV.head=[first,...cols.map(c=>c.h.replace(/<br>/g,' '))];
+ CSV.rows=[...aggs.map((g,r)=>[labels[r],...cols.map(c=>{const v=c.v(g);return v==null?'':c.f(v).replace(/,/g,'');})]),['Total',...cols.map(c=>{const v=c.v(tot);return v==null?'':c.f(v).replace(/,/g,'');})]];
 }
-/* ---------- insights ---------- */
-function renderInsights(){
-  const el=document.getElementById('ins');const out=[];
-  const mt=mask(['ten']);let f1=[0,0],fr=[0,0];
-  for(let i=0;i<N;i++)if(mt[i]&&((fl[i]>>3)&1)){const k=nB[i]===0?f1:fr;k[0]++;k[1]+=fl[i]&1;}
-  if(f1[0]>200&&fr[0]>200){const a=f1[1]/f1[0],b=fr[1]/fr[0];out.push({c:'var(--bad)',ic:'⚠',h:'First-loan cliff',t:`First-time borrowers miss the 7-day mark <b>${pct(a)}</b> of the time vs <b>${pct(b)}</b> for repeat borrowers, about <b>${b>0?(a/b).toFixed(1):'–'}×</b> worse.`});}
-  const M=mask();let pr=0,arr=0,a30=0;for(let i=0;i<N;i++)if(M[i]){pr+=amt[i];if(st[i]===1){arr+=amt[i];if(dpd[i]===5)a30+=amt[i];}}
-  if(pr>0)out.push({c:'var(--s2)',ic:'◔',h:'Arrears exposure',t:`<b>PKR ${money(arr)}</b> (${pct(arr/pr)}) of principal is in arrears; <b>${arr?pct(a30/arr,0):'–'}</b> of that is already beyond 30 days.`});
-  const mr=mask(['amt','term']);const cell=Array.from({length:20},()=>[0,0]);
-  for(let i=0;i<N;i++)if(mr[i]&&((fl[i]>>3)&1)){const c=cell[aB[i]*4+tB[i]];c[0]++;c[1]+=fl[i]&1;}
-  let best=null,worst=null;cell.forEach((c,k)=>{if(c[0]<150)return;const r=c[1]/c[0];if(!best||r<best.r)best={r,k};if(!worst||r>worst.r)worst={r,k};});
-  if(best&&worst&&best.k!==worst.k){const nm=k=>L.amt[(k/4)|0]+' / '+L.term[k%4];out.push({c:'var(--s1)',ic:'◎',h:'Risk map extremes',t:`Safest pocket: <b>${nm(best.k)}</b> at <b>${pct(best.r)}</b>. Riskiest: <b>${nm(worst.k)}</b> at <b>${pct(worst.r)}</b> (7-day default).`});}
-  let over=0,next=0;for(let i=0;i<N;i++)if(M[i]&&st[i]<2){const r=Math.max(0,repay[i]-rec[i]);if(due[i]<ASOF)over+=r;else if(due[i]<ASOF+14)next+=r;}
-  out.push({c:'var(--s3)',ic:'⇢',h:'Cash runway',t:`<b>PKR ${money(next)}</b> falls due in the next 14 days. The overdue backlog still to collect is <b>PKR ${money(over)}</b>.`});
-  el.innerHTML=out.map(o=>`<div class="ins"><div class="ic" style="background:${o.c}">${o.ic}</div><div><h5>${o.h}</h5>${o.t}</div></div>`).join('');
+const I=x=>({v:x,f:num}),P=x=>({v:x,f:v=>pc(v)});
+/* ---------- generic bars ---------- */
+function bars(host,items,o){
+ const w=vw(host),h=o.h||260,pl=o.pl||48,pr=8,pt=o.pt||22,pb=o.pb||(o.sub?44:30),SN=o.series.length,stk=o.stacked;
+ const tots=items.map(it=>stk?it.v.reduce((a,b)=>a+(b||0),0):Math.max(0,...it.v.map(x=>x||0)));const mxv=Math.max(0,...tots);
+ if(!mxv){host.innerHTML=emptyHtml(o.empty);return;}
+ const mx=scale(mxv*1.06).max,iw=w-pl-pr,ih=h-pt-pb,n=items.length,gw=iw/n,y=v=>pt+ih-(v/mx)*ih;
+ const bw=stk?Math.max(2,Math.min(44,gw-(gw>8?3:1))):Math.max(3,Math.min(36,(gw-6)/SN-2));
+ const yf=o.yFmt||money;let g='';ticks(mx).forEach(t=>g+=`<line x1="${pl}" x2="${w-pr}" y1="${y(t)}" y2="${y(t)}" stroke="${css('--grid')}"/><text x="${pl-7}" y="${y(t)+4}" text-anchor="end" font-size="11" fill="${css('--muted')}">${yf(t)}</text>`);
+ const every=Math.max(1,Math.ceil((o.labW||40)/gw));let s='',xl='';
+ const seg=(x0,v0,v1,col,r,dim)=>{const top=y(v1),bot=y(v0),bh=bot-top;if(bh<=0)return'';const rr=Math.min(r,bw/2,bh);return `<path d="M${x0} ${bot}V${top+rr}Q${x0} ${top} ${x0+rr} ${top}H${x0+bw-rr}Q${x0+bw} ${top} ${x0+bw} ${top+rr}V${bot}Z" fill="${col}" opacity="${dim?.3:1}"/>`;};
+ items.forEach((it,k)=>{const gx=pl+k*gw+gw/2,dim=it.dim;let inner='';
+  if(stk){let acc=0;it.v.forEach((v,si)=>{v=v||0;if(!v)return;const col=(it.c&&it.c[si])||o.series[si].c;inner+=seg(gx-bw/2,acc,acc+v,col,si===SN-1||it.v.slice(si+1).every(z=>!z)?(bw>5?3:0):0,dim);acc+=v;});}
+  else it.v.forEach((v,si)=>{if(v==null)return;const x0=gx-(SN*(bw+2)-2)/2+si*(bw+2),col=(it.c&&it.c[si])||o.series[si].c;inner+=seg(x0,0,v,col,4,dim);
+    if(o.values&&gw*1>=Math.max(26,SN*30)||(o.values&&bw>=24))inner+=`<text x="${x0+bw/2}" y="${y(v)-5}" text-anchor="middle" font-size="11" font-weight="650" fill="${css('--ink')}" opacity="${dim?.4:1}">${(o.vFmt||yf)(v)}</text>`;});
+  s+=`<g class="${o.click?'hot':''}" ${o.click?`tabindex="0" role="button" data-k="${k}"`:''}${it.tip?ta(it.tip):''}><rect x="${pl+k*gw}" y="${pt}" width="${gw}" height="${ih+pb}" fill="transparent"/>${inner}</g>`;
+  if(k%every===0)xl+=`<text x="${gx}" y="${h-(o.sub?24:10)}" text-anchor="middle" font-size="11.5" font-weight="${dim?400:600}" fill="${css('--ink')}">${it.l}</text>${o.sub&&it.l2!=null?`<text x="${gx}" y="${h-9}" text-anchor="middle" font-size="11" fill="${css('--muted')}">${it.l2}</text>`:''}`;});
+ host.innerHTML=`<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><line x1="${pl}" x2="${w-pr}" y1="${pt+ih}" y2="${pt+ih}" stroke="${css('--axis')}"/>${g}${s}${xl}</svg>`+(SN>1||o.legend?legendHtml(o.series.map(z=>({c:z.c,t:z.n}))):'');
+ if(o.click)host.querySelectorAll('[data-k]').forEach(nn=>keyAct(nn,()=>o.click(+nn.dataset.k)));
 }
-/* ---------- chart: pulse ---------- */
-let pulseMetric=0;
-function renderPulse(){
-  const id='c-pulse',el=plotEl(id),w=plotW(id),h=270,pl=46,pr=10,pt=10,pb=26;
-  const arr=perDay(mask(['date']),pulseMetric);const mx=niceMax(Math.max(...arr));
-  if(!isFinite(mx)){empty(id);return;}
-  const ma=[];for(let i=0;i<NDAY;i++){let s=0,c=0;for(let k=Math.max(0,i-6);k<=i;k++){s+=arr[k];c++;}ma.push(s/c);}
-  const iw=w-pl-pr,ih=h-pt-pb,step=iw/NDAY,bw=Math.max(2,step-2);
-  const y=v=>pt+ih-(v/mx)*ih;
-  const fmt=pulseMetric===0?num:v=>'PKR '+money(v);const fa=pulseMetric===0?num:money;
-  let g='';ticks(mx).forEach(t=>{g+=`<line x1="${pl}" x2="${w-pr}" y1="${y(t)}" y2="${y(t)}" stroke="${css('--grid')}"/><text x="${pl-7}" y="${y(t)+4}" text-anchor="end" font-size="11" fill="${css('--muted')}">${fa(t)}</text>`;});
-  let bars='';const full=S.from===0&&S.to===NDAY-1;
-  for(let i=0;i<NDAY;i++){const x=pl+i*step+(step-bw)/2,bh=Math.max(0,ih*(arr[i]/mx));const inw=i>=S.from&&i<=S.to;
-    bars+=`<path d="M${x} ${pt+ih}V${y(arr[i])+(bh>4?4:0)}Q${x} ${y(arr[i])} ${x+(bh>4?Math.min(4,bw/2):0)} ${y(arr[i])}H${x+bw-(bh>4?Math.min(4,bw/2):0)}Q${x+bw} ${y(arr[i])} ${x+bw} ${y(arr[i])+(bh>4?4:0)}V${pt+ih}Z" fill="${css('--s1')}" opacity="${full||inw?.5:.16}"/>`;}
-  let ln='M';ma.forEach((v,i)=>{ln+=(pl+i*step+step/2).toFixed(1)+' '+y(v).toFixed(1)+(i<ma.length-1?'L':'');});
-  let xl='';[0,14,28,42,56,70,84].forEach(i=>{if(i<NDAY)xl+=`<text x="${pl+i*step+step/2}" y="${h-7}" text-anchor="middle" font-size="11" fill="${css('--muted')}">${dFmt(i)}</text>`;});
-  const sel=full?'':`<rect x="${pl+S.from*step}" y="${pt}" width="${(S.to-S.from+1)*step}" height="${ih}" fill="none" stroke="${css('--s2')}" stroke-width="1.5" stroke-dasharray="4 3" rx="3"/>`;
-  el.innerHTML=`<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" data-live="1" style="touch-action:none"><line x1="${pl}" x2="${w-pr}" y1="${pt+ih}" y2="${pt+ih}" stroke="${css('--axis')}"/>${g}${bars}${sel}<path d="${ln}" fill="none" stroke="${css('--s2')}" stroke-width="2" stroke-linejoin="round"/>${xl}
-   <line id="pX" y1="${pt}" y2="${pt+ih}" stroke="${css('--ink2')}" stroke-width="1" visibility="hidden"/><rect id="pBr" y="${pt}" height="${ih}" fill="${css('--s2')}" opacity=".18" visibility="hidden"/>
-   <rect id="pOv" x="${pl}" y="${pt}" width="${iw}" height="${ih}" fill="transparent" style="cursor:crosshair"/></svg>`;
-  legend(id,[{c:css('--s1'),t:'Daily'},{c:css('--s2'),t:'7-day average',ln:1}]);
-  const svg=el.querySelector('svg'),ov=svg.querySelector('#pOv'),px=svg.querySelector('#pX'),br=svg.querySelector('#pBr');
-  const idx=e=>{const r=svg.getBoundingClientRect();return Math.max(0,Math.min(NDAY-1,Math.floor((e.clientX-r.left-pl)/step)));};
-  let a0=null;
-  ov.addEventListener('pointerdown',e=>{a0=idx(e);ov.setPointerCapture(e.pointerId);});
-  ov.addEventListener('pointermove',e=>{const i=idx(e);px.setAttribute('x1',pl+i*step+step/2);px.setAttribute('x2',pl+i*step+step/2);px.setAttribute('visibility','visible');
-    if(a0!==null&&i!==a0){const lo=Math.min(a0,i),hi=Math.max(a0,i);br.setAttribute('x',pl+lo*step);br.setAttribute('width',(hi-lo+1)*step);br.setAttribute('visibility','visible');}
-    showTip(`<div class="k">${dFmt(i)} · ${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][i%7]}</div>`+tipRow(css('--s1'),pulseMetric===0?'loans':pulseMetric===1?'principal':'margin',fmt(arr[i]))+tipRow(css('--s2'),'7-day avg',fmt(ma[i])),e.clientX,e.clientY);});
-  ov.addEventListener('pointerleave',()=>{px.setAttribute('visibility','hidden');hideTip();});
-  ov.addEventListener('pointerup',e=>{if(a0===null)return;const i=idx(e),lo=Math.min(a0,i),hi=Math.max(a0,i);a0=null;br.setAttribute('visibility','hidden');if(hi>lo){S.from=lo;S.to=hi;render();}});
-  ov.addEventListener('dblclick',()=>{S.from=0;S.to=NDAY-1;render();});
-  table(id,['Date','Loans','Principal (PKR)','Margin (PKR)'],(()=>{const a=perDay(mask(['date']),0),b=perDay(mask(['date']),1),c=perDay(mask(['date']),2);return Array.from({length:NDAY},(_,i)=>[dFmt(i),num(a[i]),num(b[i]),num(c[i])]);})());
+/* ---------- heat grid ---------- */
+function heat(host,rows,cols,cell,o){
+ const w=vw(host),lw=o.lw,ch=o.ch,pt=o.pt||24,gap=2,cw=(w-lw-4)/cols.length,h=pt+rows.length*ch+4;let s='';
+ cols.forEach((c,j)=>s+=`<text x="${lw+j*cw+cw/2}" y="${pt-9}" text-anchor="middle" font-size="11.5" fill="${css('--muted')}">${c}</text>`);
+ rows.forEach((r,i)=>{s+=`<text x="${lw-8}" y="${pt+i*ch+ch/2+4}" text-anchor="end" font-size="12" fill="${css('--ink2')}">${r}</text>`;
+  cols.forEach((c,j)=>{const d=cell(i,j),x=lw+j*cw,y=pt+i*ch,col=d.v==null?null:ramp(o.stops,d.v);
+   s+=`<g class="${d.hot?'hot':''}" ${d.hot?`tabindex="0" role="button" data-r="${i}" data-c="${j}"`:''}${d.tip?ta(d.tip):''}><rect x="${x+gap/2}" y="${y+gap/2}" width="${cw-gap}" height="${ch-gap}" rx="${o.rx||5}" fill="${col?rgb(col):'none'}" stroke="${d.sel?css('--ink'):(col?'none':css('--grid'))}" stroke-width="${d.sel?2:1}" ${d.dim?'opacity=".35"':''}/>${d.txt?`<text x="${x+cw/2}" y="${y+ch/2+4}" text-anchor="middle" font-size="${o.tf||12}" font-weight="650" fill="${col&&lum(col)<.55?'#fff':'#16241b'}" ${d.dim?'opacity=".5"':''}>${d.txt}</text>`:''}</g>`;});});
+ host.innerHTML=`<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${s}</svg>`;
+ if(o.click)host.querySelectorAll('[data-r]').forEach(nn=>keyAct(nn,()=>o.click(+nn.dataset.r,+nn.dataset.c)));
 }
-/* ---------- chart: status ---------- */
-function renderStatus(){
-  const id='c-status',el=plotEl(id),w=plotW(id),m=mask(['st']);
-  const pr=[0,0,0],cn=[0,0,0];for(let i=0;i<N;i++)if(m[i]){pr[st[i]]+=amt[i];cn[st[i]]++;}
-  const tot=pr[0]+pr[1]+pr[2];if(!tot){empty(id);return;}
-  const cols=[css('--s1'),css('--bad'),css('--good')],order=[2,0,1],rowH=62,h=rowH*3+4,mx=Math.max(...pr);
-  const lw=Math.min(86,w*.28),bw=w-lw-6;let s='';
-  order.forEach((k,r)=>{const y=6+r*rowH,len=Math.max(3,(pr[k]/mx)*(bw-8)),dim=S.st.size&&!S.st.has(k);
-    s+=`<g class="hot ${dim?'dim':''}" tabindex="0" role="button" aria-label="${L.st[k]}" data-k="${k}"${tipAttr(`<div class="k">${L.st[k]}</div><div class="v">PKR ${money(pr[k])}</div><div class="k">${num(cn[k])} loans · ${pct(pr[k]/tot)} of principal</div>`)}>
-     <rect x="0" y="${y-4}" width="${w}" height="${rowH-6}" fill="transparent"/>
-     <text x="0" y="${y+14}" font-size="13" font-weight="600" fill="${css('--ink')}">${L.st[k]}</text><text x="0" y="${y+31}" font-size="11.5" fill="${css('--muted')}">${num(cn[k])} loans</text>
-     <path d="M${lw} ${y+4}H${lw+len-4}Q${lw+len} ${y+4} ${lw+len} ${y+8}V${y+26}Q${lw+len} ${y+30} ${lw+len-4} ${y+30}H${lw}Z" fill="${cols[k]}"/>
-     <text x="${lw+len+7>w-60?lw+len-8:lw+len+7}" y="${y+22}" font-size="12.5" font-weight="650" text-anchor="${lw+len+7>w-60?'end':'start'}" fill="${lw+len+7>w-60?'#fff':css('--ink')}">${money(pr[k])} · ${pct(pr[k]/tot,0)}</text></g>`;});
-  el.innerHTML=`<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Principal by loan status">${s}</svg>`;
-  el.querySelectorAll('[data-k]').forEach(g=>{g.onclick=()=>toggle('st',+g.dataset.k);g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle('st',+g.dataset.k);}};});
-  table(id,['Status','Loans','Principal (PKR)','Share'],[0,1,2].map(k=>[L.st[k],num(cn[k]),num(pr[k]),pct(pr[k]/tot)]));
+const gradLegend=(stops,lo,hi,label)=>`<div class="legend"><span>${label}</span><span style="gap:6px">${lo}<i style="width:90px;height:10px;background:linear-gradient(90deg,${[0,.25,.5,.75,1].map(t=>rgb(ramp(stops,t))).join(',')})"></i>${hi}</span></div>`;
+function card(title,sub,extra){return `<div class="cc ${extra||''}"><h4>${title}</h4><p>${sub||''}</p><div class="plot"></div></div>`;}
+const plotsOf=host=>[...host.querySelectorAll('.plot')];
+const toggleF=(k,v)=>{S[k]=S[k]===v?null:v;render();};
+/* ---------- trend (daily bars + average + brush) ---------- */
+function trend(host,arr,o){
+ const w=vw(host),h=o.h||270,pl=50,pr=10,pt=10,pb=26,mx=scale(Math.max(...arr)).max;
+ if(!(mx>0)||!isFinite(mx)){host.innerHTML=emptyHtml();return;}
+ const ma=arr.map((_,i)=>{let s=0,c=0;for(let k=Math.max(0,i-6);k<=i;k++){s+=arr[k];c++;}return s/c;});
+ const iw=w-pl-pr,ih=h-pt-pb,step=iw/arr.length,bw=Math.max(2,step-2),y=v=>pt+ih-(v/mx)*ih,full=S.from===0&&S.to===NDAY-1;
+ let g='';ticks(mx).forEach(t=>g+=`<line x1="${pl}" x2="${w-pr}" y1="${y(t)}" y2="${y(t)}" stroke="${css('--grid')}"/><text x="${pl-7}" y="${y(t)+4}" text-anchor="end" font-size="11" fill="${css('--muted')}">${o.yFmt(t)}</text>`);
+ let b='';arr.forEach((v,i)=>{const x=pl+i*step+(step-bw)/2,top=y(v),inw=i>=S.from&&i<=S.to;if(ih-(top-pt)>0)b+=`<rect x="${x}" y="${top}" width="${bw}" height="${pt+ih-top}" rx="${Math.min(3,bw/2)}" fill="${css('--s1')}" opacity="${full||inw?.55:.18}"/>`;});
+ let ln='M';ma.forEach((v,i)=>{ln+=(pl+i*step+step/2).toFixed(1)+' '+y(v).toFixed(1)+(i<ma.length-1?'L':'');});
+ let xl='';for(let i=0;i<arr.length;i+=14)xl+=`<text x="${pl+i*step+step/2}" y="${h-7}" text-anchor="middle" font-size="11" fill="${css('--muted')}">${dFmt(i)}</text>`;
+ const sel=full?'':`<rect x="${pl+S.from*step}" y="${pt}" width="${(S.to-S.from+1)*step}" height="${ih}" fill="none" stroke="${css('--s2')}" stroke-width="1.5" stroke-dasharray="4 3" rx="3"/>`;
+ host.innerHTML=`<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" data-live="1" style="touch-action:none"><line x1="${pl}" x2="${w-pr}" y1="${pt+ih}" y2="${pt+ih}" stroke="${css('--axis')}"/>${g}${b}${sel}<path d="${ln}" fill="none" stroke="${css('--s2')}" stroke-width="2" stroke-linejoin="round"/>${xl}<line id="px" y1="${pt}" y2="${pt+ih}" stroke="${css('--ink2')}" visibility="hidden"/><rect id="br" y="${pt}" height="${ih}" fill="${css('--s2')}" opacity=".18" visibility="hidden"/><rect id="ov" x="${pl}" y="${pt}" width="${iw}" height="${ih}" fill="transparent" style="cursor:crosshair"/></svg>`+legendHtml([{c:css('--s1'),t:'Daily'},{c:css('--s2'),t:'7-day average',ln:1}])+'<div class="note">Drag across the chart to set the origination window. Double-click to reset.</div>';
+ const svg=host.querySelector('svg'),ov=svg.querySelector('#ov'),px=svg.querySelector('#px'),br=svg.querySelector('#br');
+ const idx=e=>Math.max(0,Math.min(arr.length-1,Math.floor((e.clientX-svg.getBoundingClientRect().left-pl)/step)));let a0=null;
+ ov.addEventListener('pointerdown',e=>{a0=idx(e);ov.setPointerCapture(e.pointerId);});
+ ov.addEventListener('pointermove',e=>{const i=idx(e);px.setAttribute('x1',pl+i*step+step/2);px.setAttribute('x2',pl+i*step+step/2);px.setAttribute('visibility','visible');
+  if(a0!==null&&i!==a0){const lo=Math.min(a0,i),hi=Math.max(a0,i);br.setAttribute('x',pl+lo*step);br.setAttribute('width',(hi-lo+1)*step);br.setAttribute('visibility','visible');}
+  showTip(`<div class="k">${dFmt(i)} · ${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][i%7]}</div>`+trow(css('--s1'),o.name,o.yFmt(arr[i]))+trow(css('--s2'),'7-day avg',o.yFmt(ma[i])),e.clientX,e.clientY);});
+ ov.addEventListener('pointerleave',()=>{px.setAttribute('visibility','hidden');hideTip();});
+ ov.addEventListener('pointerup',e=>{if(a0===null)return;const i=idx(e),lo=Math.min(a0,i),hi=Math.max(a0,i);a0=null;br.setAttribute('visibility','hidden');if(hi>lo){S.from=lo;S.to=hi;render();}});
+ ov.addEventListener('dblclick',()=>{S.from=0;S.to=NDAY-1;render();});
 }
-/* ---------- chart: vintage ---------- */
-function renderVintage(){
-  const id='c-vintage',el=plotEl(id),w=plotW(id),h=260,pl=42,pr=70,pt=12,pb=26;
-  const m=mask(['date']);const W=Math.ceil(NDAY/7);
-  const a=Array.from({length:W},()=>[0,0,0,0,0,0,0]);// mat7,def7,mat15,def15,mat30,def30,total
-  for(let i=0;i<N;i++)if(m[i]){const f=fl[i],o=a[(day[i]/7)|0];o[6]++;if((f>>3)&1){o[0]++;o[1]+=f&1;}if((f>>4)&1){o[2]++;o[3]+=(f>>1)&1;}if((f>>5)&1){o[4]++;o[5]+=(f>>2)&1;}}
-  const ser=[{n:'7-day',k:0,c:css('--s1')},{n:'15-day',k:2,c:css('--s2')},{n:'30-day',k:4,c:css('--s3')}];
-  const MIN=200;let mxv=0;ser.forEach(s=>{s.v=a.map(o=>o[s.k]>=MIN&&o[s.k]/o[6]>=.9?o[s.k+1]/o[s.k]:null);s.v.forEach(x=>{if(x!=null)mxv=Math.max(mxv,x);});});
-  if(!mxv){empty(id,'No mature cohorts in the current filters');return;}
-  const mx=niceMax(mxv*1.05),iw=w-pl-pr,ih=h-pt-pb,x=i=>pl+iw*(i+.5)/W,y=v=>pt+ih-(v/mx)*ih;
-  let g='';ticks(mx).forEach(t=>g+=`<line x1="${pl}" x2="${w-pr}" y1="${y(t)}" y2="${y(t)}" stroke="${css('--grid')}"/><text x="${pl-7}" y="${y(t)+4}" text-anchor="end" font-size="11" fill="${css('--muted')}">${pct(t,0)}</text>`);
-  let xl='';for(let i=0;i<W;i+=2)xl+=`<text x="${x(i)}" y="${h-7}" text-anchor="middle" font-size="11" fill="${css('--muted')}">${dFmt(i*7)}</text>`;
-  let paths='',dots='',labs=[];
-  ser.forEach(s=>{let d='',pen=false;s.v.forEach((v,i)=>{if(v==null){pen=false;return;}d+=(pen?'L':'M')+x(i).toFixed(1)+' '+y(v).toFixed(1);pen=true;});
-    paths+=`<path d="${d}" fill="none" stroke="${s.c}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
-    s.v.forEach((v,i)=>{if(v!=null)dots+=`<circle cx="${x(i)}" cy="${y(v)}" r="4" fill="${s.c}" stroke="${css('--card-solid')}" stroke-width="2"/>`;});
-    let li=-1;s.v.forEach((v,i)=>{if(v!=null)li=i;});if(li>=0)labs.push({y:y(s.v[li]),x:x(li),t:s.n,c:s.c});});
-  labs.sort((p,q)=>p.y-q.y);for(let i=1;i<labs.length;i++)if(labs[i].y-labs[i-1].y<14)labs[i].y=labs[i-1].y+14;
-  const lb=labs.map(l=>`<text x="${l.x+9}" y="${l.y+4}" font-size="12" font-weight="600" fill="${css('--ink')}">${l.t}</text>`).join('');
-  el.innerHTML=`<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" data-live="1"><line x1="${pl}" x2="${w-pr}" y1="${pt+ih}" y2="${pt+ih}" stroke="${css('--axis')}"/>${g}${xl}${paths}${dots}${lb}<line id="vX" y1="${pt}" y2="${pt+ih}" stroke="${css('--ink2')}" visibility="hidden"/><rect id="vOv" x="${pl}" y="${pt}" width="${iw}" height="${ih}" fill="transparent"/></svg>`;
-  legend(id,ser.map(s=>({c:s.c,t:s.n+' default',ln:1})));
-  document.getElementById('vNote').textContent='A cohort is plotted only once at least 90% of its loans are past due by 7, 15 or 30 days, so young cohorts are never flattered by short loans maturing first.';
-  const svg=el.querySelector('svg'),ov=svg.querySelector('#vOv'),vx=svg.querySelector('#vX');
-  ov.addEventListener('pointermove',e=>{const r=svg.getBoundingClientRect();const i=Math.max(0,Math.min(W-1,Math.floor((e.clientX-r.left-pl)/(iw/W))));vx.setAttribute('x1',x(i));vx.setAttribute('x2',x(i));vx.setAttribute('visibility','visible');
-    showTip(`<div class="k">Cohort of ${dFmt(i*7)}</div>`+ser.map(s=>tipRow(s.c,s.n+' default'+(s.v[i]==null?'':' ('+num(a[i][s.k])+' loans)'),s.v[i]==null?'<span class="k">not yet mature</span>':pct(s.v[i]))).join(''),e.clientX,e.clientY);});
-  ov.addEventListener('pointerleave',()=>{vx.setAttribute('visibility','hidden');hideTip();});
-  table(id,['Cohort week','7-day default','15-day default','30-day default'],a.map((o,i)=>[dFmt(i*7),...ser.map(s=>s.v[i]==null?'–':pct(s.v[i]))]));
-}
-/* ---------- chart: cliff ---------- */
-function renderCliff(){
-  const id='c-cliff',el=plotEl(id),w=plotW(id),h=260,pl=40,pr=8,pt=22,pb=44,m=mask(['ten']);
-  const o=Array.from({length:5},()=>[0,0,0,0]);
-  for(let i=0;i<N;i++)if(m[i]){const f=fl[i],c=o[nB[i]];if((f>>3)&1){c[0]++;c[1]+=f&1;}if((f>>5)&1){c[2]++;c[3]+=(f>>2)&1;}}
-  const r7=o.map(c=>c[0]>=30?c[1]/c[0]:null),r30=o.map(c=>c[2]>=30?c[3]/c[2]:null);
-  const mxv=Math.max(0,...r7.filter(x=>x!=null),...r30.filter(x=>x!=null));if(!mxv){empty(id);return;}
-  const mx=niceMax(mxv*1.08),iw=w-pl-pr,ih=h-pt-pb,gw=iw/5,bw=Math.min(34,gw/2-5),y=v=>pt+ih-(v/mx)*ih;
-  let g='';ticks(mx).forEach(t=>g+=`<line x1="${pl}" x2="${w-pr}" y1="${y(t)}" y2="${y(t)}" stroke="${css('--grid')}"/><text x="${pl-7}" y="${y(t)+4}" text-anchor="end" font-size="11" fill="${css('--muted')}">${pct(t,0)}</text>`);
-  let s='';const bar=(x0,v,c,dim)=>{if(v==null)return'';const top=y(v),bh=pt+ih-top,r=Math.min(4,bw/2,bh);return`<path d="M${x0} ${pt+ih}V${top+r}Q${x0} ${top} ${x0+r} ${top}H${x0+bw-r}Q${x0+bw} ${top} ${x0+bw} ${top+r}V${pt+ih}Z" fill="${c}" opacity="${dim?.3:1}"/><text x="${x0+bw/2}" y="${top-5}" text-anchor="middle" font-size="11" font-weight="600" fill="${css('--ink')}" opacity="${dim?.4:1}">${(v*100).toFixed(v<.1?1:0)}%</text>`;};
-  for(let k=0;k<5;k++){const gx=pl+k*gw+gw/2,dim=S.ten.size&&!S.ten.has(k);
-    s+=`<g class="hot" tabindex="0" role="button" aria-label="${L.ten[k]}" data-k="${k}"${tipAttr(`<div class="k">${L.ten[k]}</div>`+tipRow(css('--s2'),'7-day default'+(r7[k]==null?'':' ('+num(o[k][0])+' loans)'),pct(r7[k]))+tipRow(css('--s1'),'30-day default'+(r30[k]==null?'':' ('+num(o[k][2])+' loans)'),pct(r30[k])))}>
-     <rect x="${pl+k*gw}" y="${pt}" width="${gw}" height="${ih+pb}" fill="transparent"/>${bar(gx-bw-1,r7[k],css('--s2'),dim)}${bar(gx+1,r30[k],css('--s1'),dim)}
-     <text x="${gx}" y="${h-22}" text-anchor="middle" font-size="12" font-weight="${dim?400:600}" fill="${css('--ink')}">${L.ten[k].split(' ')[0]}</text><text x="${gx}" y="${h-8}" text-anchor="middle" font-size="11" fill="${css('--muted')}">${L.ten[k].split(' ').slice(1).join(' ')||'borrowers'}</text></g>`;}
-  el.innerHTML=`<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><line x1="${pl}" x2="${w-pr}" y1="${pt+ih}" y2="${pt+ih}" stroke="${css('--axis')}"/>${g}${s}</svg>`;
-  legend(id,[{c:css('--s2'),t:'7-day default'},{c:css('--s1'),t:'30-day default'}]);
-  el.querySelectorAll('[data-k]').forEach(n=>{n.onclick=()=>toggle('ten',+n.dataset.k);n.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle('ten',+n.dataset.k);}};});
-  table(id,['Borrower history','7-day default','30-day default','Mature loans (7d)'],L.ten.map((t,k)=>[t,pct(r7[k]),pct(r30[k]),num(o[k][0])]));
-}
-/* ---------- heat helper ---------- */
-function heat(id,rows,cols,cell,opts){// cell(r,c)->{v:0..1,txt,tip,hot,sel}
-  const el=plotEl(id),w=plotW(id),lw=opts.lw,ch=opts.ch,pt=opts.pt||22,gap=2;const cw=(w-lw-4)/cols.length,h=pt+rows.length*ch+4;
-  let s='';cols.forEach((c,j)=>s+=`<text x="${lw+j*cw+cw/2}" y="${pt-8}" text-anchor="middle" font-size="${opts.cf||11.5}" fill="${css('--muted')}">${c}</text>`);
-  rows.forEach((r,i)=>{s+=`<text x="${lw-8}" y="${pt+i*ch+ch/2+4}" text-anchor="end" font-size="${opts.rf||12}" fill="${css('--ink2')}">${r}</text>`;
-    cols.forEach((c,j)=>{const d=cell(i,j),x=lw+j*cw,y=pt+i*ch;const col=d.v==null?null:ramp(opts.stops,d.v);
-      s+=`<g class="${d.hot?'hot':''}" ${d.hot?`tabindex="0" role="button" data-r="${i}" data-c="${j}"`:''}${d.tip?tipAttr(d.tip):''}><rect x="${x+gap/2}" y="${y+gap/2}" width="${cw-gap}" height="${ch-gap}" rx="${opts.rx||5}" fill="${col?rgb(col):'none'}" stroke="${d.sel?css('--ink'):(col?'none':css('--grid'))}" stroke-width="${d.sel?2:1}" ${d.dim?'opacity=".35"':''}/>${d.txt?`<text x="${x+cw/2}" y="${y+ch/2+4}" text-anchor="middle" font-size="${opts.tf||12}" font-weight="600" fill="${col&&lum(col)<.55?'#fff':'#0b0b0b'}" ${d.dim?'opacity=".5"':''}>${d.txt}</text>`:''}</g>`;});});
-  el.innerHTML=`<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${s}</svg>`;
-  if(opts.click)el.querySelectorAll('[data-r]').forEach(n=>{const f=()=>opts.click(+n.dataset.r,+n.dataset.c);n.onclick=f;n.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();f();}};});
-}
-function gradLegend(id,stops,lo,hi,label){const el=document.querySelector('#'+id+' .legend');const g=[0,.25,.5,.75,1].map(t=>rgb(ramp(stops,t))).join(',');el.innerHTML=`<span>${label}</span><span style="gap:6px">${lo}<i style="width:90px;height:10px;background:linear-gradient(90deg,${g})"></i>${hi}</span>`;}
-/* ---------- chart: risk map ---------- */
-function renderRisk(){
-  const id='c-risk',m=mask(['amt','term']);const c=Array.from({length:20},()=>[0,0]);
-  for(let i=0;i<N;i++)if(m[i]&&((fl[i]>>3)&1)){const k=c[aB[i]*4+tB[i]];k[0]++;k[1]+=fl[i]&1;}
-  const rates=c.map(x=>x[0]>=30?x[1]/x[0]:null);const mxv=Math.max(0,...rates.filter(x=>x!=null));
-  if(!mxv){empty(id);return;}
-  const top=Math.max(.3,mxv);
-  heat(id,L.amt,L.term,(r,j)=>{const k=r*4+j,v=rates[k];const sel=S.amt.has(r)&&S.term.has(j);const dim=(S.amt.size||S.term.size)&&!( (!S.amt.size||S.amt.has(r)) && (!S.term.size||S.term.has(j)) );
-    return{v:v==null?null:v/top,txt:v==null?'–':(v*100).toFixed(0)+'%',hot:true,sel,dim,tip:`<div class="k">${L.amt[r]} · ${L.term[j]}</div><div class="v">${pct(v)}</div><div class="k">${num(c[k][0])} loans mature at 7 days</div>`};},
-    {lw:58,ch:48,stops:HEAT,tf:13,click:(r,j)=>{if(S.amt.size===1&&S.amt.has(r)&&S.term.size===1&&S.term.has(j)){S.amt.clear();S.term.clear();}else{S.amt=new Set([r]);S.term=new Set([j]);}render();}});
-  gradLegend(id,HEAT,'0%',(top*100).toFixed(0)+'% defaulted by day 7','Rows: loan size. Columns: tenor');
-  table(id,['Size / tenor',...L.term],L.amt.map((a,r)=>[a,...L.term.map((t,j)=>pct(rates[r*4+j],0))]));
-}
-/* ---------- chart: dpd ladder ---------- */
-function renderDpd(){
-  const id='c-dpd',el=plotEl(id),w=plotW(id),h=250,pl=42,pr=8,pt=26,pb=42,m=mask(['dpd']);
-  const pr_=new Float64Array(6),cn=new Float64Array(6);for(let i=0;i<N;i++)if(m[i]){pr_[dpd[i]]+=amt[i];cn[dpd[i]]++;}
-  const tot=pr_.reduce((a,b)=>a+b,0);if(!tot){empty(id);return;}
-  const mx=niceMax(Math.max(...[...pr_].slice(1))*1.1)||1,iw=w-pl-pr,ih=h-pt-pb,gw=iw/5,bw=Math.min(54,gw-14),y=v=>pt+ih-(v/mx)*ih;
-  let g='';ticks(mx).forEach(t=>g+=`<line x1="${pl}" x2="${w-pr}" y1="${y(t)}" y2="${y(t)}" stroke="${css('--grid')}"/><text x="${pl-7}" y="${y(t)+4}" text-anchor="end" font-size="11" fill="${css('--muted')}">${money(t)}</text>`);
-  let s='';for(let k=1;k<6;k++){const kk=k-1;const x0=pl+kk*gw+(gw-bw)/2,top=y(pr_[k]),bh=pt+ih-top,r=Math.min(4,bw/2,bh),dim=S.dpd.size&&!S.dpd.has(k);
-    const col=rgb(ramp(HEAT,.2+(k-1)*.2));
-    s+=`<g class="hot" tabindex="0" role="button" aria-label="${L.dpd[k]}" data-k="${k}"${tipAttr(`<div class="k">${L.dpd[k]}</div><div class="v">PKR ${money(pr_[k])}</div><div class="k">${num(cn[k])} loans · ${pct(pr_[k]/tot)} of principal</div>`)}><rect x="${pl+kk*gw}" y="${pt}" width="${gw}" height="${ih+pb}" fill="transparent"/>
-     <path d="M${x0} ${pt+ih}V${top+r}Q${x0} ${top} ${x0+r} ${top}H${x0+bw-r}Q${x0+bw} ${top} ${x0+bw} ${top+r}V${pt+ih}Z" fill="${col}" opacity="${dim?.3:1}"/>
-     <text x="${x0+bw/2}" y="${top-6}" text-anchor="middle" font-size="11.5" font-weight="600" fill="${css('--ink')}" opacity="${dim?.4:1}">${money(pr_[k])}</text>
-     <text x="${x0+bw/2}" y="${h-23}" text-anchor="middle" font-size="12" font-weight="600" fill="${css('--ink')}">${L.dpd[k]}</text><text x="${x0+bw/2}" y="${h-9}" text-anchor="middle" font-size="11" fill="${css('--muted')}">${pct(pr_[k]/tot,1)}</text></g>`;}
-  el.innerHTML=`<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><line x1="${pl}" x2="${w-pr}" y1="${pt+ih}" y2="${pt+ih}" stroke="${css('--axis')}"/>${g}${s}</svg><div class="note">Not shown: <b>DPD 0</b> (on time) holds PKR ${money(pr_[0])}, ${pct(pr_[0]/tot)} of principal in view. Use the DPD 0 filter chip to isolate it.</div>`;
-  el.querySelectorAll('[data-k]').forEach(n=>{n.onclick=()=>toggle('dpd',+n.dataset.k);n.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle('dpd',+n.dataset.k);}};});
-  table(id,['Bucket','Loans','Principal (PKR)','Share'],L.dpd.map((d,k)=>[d,num(cn[k]),num(pr_[k]),pct(pr_[k]/tot)]));
-}
-/* ---------- chart: runway ---------- */
-function renderRunway(){
-  const id='c-run',el=plotEl(id),w=plotW(id),h=260,pl=46,pr=10,pt=26,pb=28,m=mask();
-  const B=new Map();let any=false;
-  for(let i=0;i<N;i++)if(m[i]&&st[i]<2){const r=Math.max(0,repay[i]-rec[i]);if(!r)continue;const b=Math.floor((due[i]-ASOF)/7);B.set(b,(B.get(b)||0)+r);any=true;}
-  if(!any){empty(id,'Nothing outstanding in these filters');return;}
-  const ks=[...B.keys()].sort((a,b)=>a-b),lo=ks[0],hi=ks[ks.length-1],n=hi-lo+1;
-  const mx=niceMax(Math.max(...B.values())*1.05),iw=w-pl-pr,ih=h-pt-pb,step=iw/n,bw=Math.max(3,step-3),y=v=>pt+ih-(v/mx)*ih;
-  let g='';ticks(mx).forEach(t=>g+=`<line x1="${pl}" x2="${w-pr}" y1="${y(t)}" y2="${y(t)}" stroke="${css('--grid')}"/><text x="${pl-7}" y="${y(t)+4}" text-anchor="end" font-size="11" fill="${css('--muted')}">${money(t)}</text>`);
-  let s='',xl='';const rows=[];
-  for(let b=lo;b<=hi;b++){const v=B.get(b)||0,x0=pl+(b-lo)*step+(step-bw)/2,top=y(v),bh=pt+ih-top,r=Math.min(4,bw/2,bh),over=b<0,ds=ASOF+b*7;
-    const lab=dFmt(ds)+' – '+dFmt(ds+6);rows.push([lab,over?'Overdue':'Upcoming',num(v)]);
-    if(v>0)s+=`<path d="M${x0} ${pt+ih}V${top+r}Q${x0} ${top} ${x0+r} ${top}H${x0+bw-r}Q${x0+bw} ${top} ${x0+bw} ${top+r}V${pt+ih}Z" fill="${over?css('--bad'):css('--s1')}"${tipAttr(`<div class="k">${over?'Overdue':'Due'} ${lab}</div><div class="v">PKR ${money(v)}</div>`)}/>`;
-    if(n<=14||(b-lo)%2===0)xl+=`<text x="${pl+(b-lo)*step+step/2}" y="${h-9}" text-anchor="middle" font-size="11" fill="${css('--muted')}">${dFmt(ds)}</text>`;}
-  const bx=pl+(0-lo)*step;const marker=lo<0&&hi>=0?`<line x1="${bx}" x2="${bx}" y1="${pt-8}" y2="${pt+ih}" stroke="${css('--ink2')}" stroke-dasharray="4 3"/><text x="${bx-6}" y="${pt-10}" text-anchor="end" font-size="11.5" font-weight="600" fill="${css('--badtext')}">◀ Overdue</text><text x="${bx+6}" y="${pt-10}" font-size="11.5" font-weight="600" fill="${css('--ink2')}">Upcoming ▶</text>`:'';
-  el.innerHTML=`<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><line x1="${pl}" x2="${w-pr}" y1="${pt+ih}" y2="${pt+ih}" stroke="${css('--axis')}"/>${g}${s}${marker}${xl}</svg>`;
-  legend(id,[{c:css('--bad'),t:'Overdue (due before 09 Jul)'},{c:css('--s1'),t:'Not yet due'}]);
-  table(id,['Week due','Status','Outstanding (PKR)'],rows);
-}
-/* ---------- chart: levers ---------- */
-function renderLevers(){
-  const id='c-lev',el=plotEl(id),w=plotW(id),m=mask(['slider']);
-  const o=[0,1].map(()=>({n:0,m7:0,d7:0,pr:0,pf:0}));
-  for(let i=0;i<N;i++)if(m[i]){const f=fl[i],c=o[(f>>6)&1];c.n++;c.pr+=amt[i];c.pf+=profit[i];if((f>>3)&1){c.m7++;c.d7+=f&1;}}
-  if(!o[0].n&&!o[1].n){empty(id);return;}
-  const tot=o[0].n+o[1].n;
-  const met=[{t:'7-day default rate',f:c=>c.m7>=30?c.d7/c.m7:null,fm:v=>pct(v)},{t:'Margin on principal',f:c=>c.pr?c.pf/c.pr:null,fm:v=>pct(v)},{t:'Average loan size',f:c=>c.n?c.pr/c.n:null,fm:v=>'PKR '+money(v)}];
-  const rowH=70,h=rowH*3+8,lw=0;let s='';
-  met.forEach((mt,r)=>{const vs=[mt.f(o[1]),mt.f(o[0])],mx=Math.max(...vs.filter(x=>x!=null),1e-9);const y0=r*rowH+6;
-    s+=`<text x="0" y="${y0+12}" font-size="12.5" font-weight="600" fill="${css('--ink')}">${mt.t}</text>`;
-    [1,0].forEach((k,j)=>{const v=vs[j],yy=y0+20+j*21,len=v==null?0:Math.max(3,v/mx*(w-170)),dim=S.slider!==null&&S.slider!==k,col=k===1?css('--s2'):css('--s1');
-      s+=`<g class="hot ${dim?'dim':''}" tabindex="0" role="button" data-k="${k}" aria-label="Slider ${k?'used':'not used'}"${tipAttr(`<div class="k">Slider ${k?'used':'not used'} · ${num(o[k].n)} loans</div><div class="v">${v==null?'–':mt.fm(v)}</div>`)}><rect x="0" y="${yy-2}" width="${w}" height="19" fill="transparent"/>
-      <text x="0" y="${yy+12}" font-size="11.5" fill="${css('--muted')}">${k?'Slider used':'No slider'}</text><rect x="86" y="${yy}" width="${len}" height="14" rx="4" fill="${col}"/><text x="${86+len+7}" y="${yy+12}" font-size="12" font-weight="650" fill="${css('--ink')}">${v==null?'–':mt.fm(v)}</text></g>`;});});
-  el.innerHTML=`<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${s}</svg><div class="note">Slider adoption: <b>${pct(o[1].n/tot)}</b> of loans${S.cool!==null?'':''}. Cool-off exits (early settlement): <b>${pct(coolShare())}</b> of loans in view.</div>`;
-  el.querySelectorAll('[data-k]').forEach(n=>{const f=()=>{const k=+n.dataset.k;S.slider=S.slider===k?null:k;render();};n.onclick=f;n.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();f();}};});
-  legend(id,[{c:css('--s2'),t:'Used the slider'},{c:css('--s1'),t:'Did not'}]);
-  table(id,['Metric','Slider used','No slider'],met.map(mt=>[mt.t,(v=>v==null?'–':mt.fm(v))(mt.f(o[1])),(v=>v==null?'–':mt.fm(v))(mt.f(o[0]))]));
-}
-function coolShare(){const m=mask();let n=0,c=0;for(let i=0;i<N;i++)if(m[i]){n++;c+=(fl[i]>>7)&1;}return n?c/n:null;}
-/* ---------- chart: heartbeat ---------- */
-function renderHeart(){
-  const id='c-heart',m=mask();const c=Array.from({length:7},()=>new Array(24).fill(0));
-  for(let i=0;i<N;i++)if(m[i])c[day[i]%7][hour[i]]++;
-  const mxv=Math.max(...c.flat());if(!mxv){empty(id);return;}
+/* =============== VIEWS =============== */
+const bandCols={
+ disb:[{h:'Loans',...I(g=>g.n),heat:'t'},{h:'Disbursed<br>(PKR)',...I(g=>g.disb),heat:'t'},{h:'Avg<br>ticket',...I(g=>div(g.disb,g.n))},{h:'Avg term<br>(days)',v:g=>div(g.termSum,g.n),f:v=>v.toFixed(1)},
+  {h:'Repayable<br>(PKR)',...I(g=>g.repay)},{h:'Margin<br>(PKR)',...I(g=>g.profit),heat:'t'},{h:'Margin<br>%',...P(g=>div(g.profit,g.disb))},{h:'Repeat<br>borrowers %',...P(g=>div(g.rep,g.n))},
+  {h:'Slider<br>used %',...P(g=>div(g.slider,g.n))},{h:'Cool-off<br>exits %',...P(g=>div(g.cool,g.n))},{h:'Disbursed<br>≤3h %',...P(g=>div(g.fast,g.soldN))}],
+ rec:[{h:'Due<br>loans',...I(g=>g.due),heat:'t'},{h:'Recovered<br>loans',...I(g=>g.recN)},{h:'Cool-off<br>count',...I(g=>g.cool)},{h:'Cool-off<br>paid (PKR)',...I(g=>g.coolPaid)},{h:'NPL closed<br>count',...I(g=>g.nplClosed)},
+  {h:'Repayable<br>due (PKR)',...I(g=>g.repayDue)},{h:'Recovered<br>(PKR)',...I(g=>g.recDue),heat:'t'},{h:'Recovery<br>rate %',...P(g=>div(g.recDue,g.repayDue)),heat:'t'},
+  {h:'On time<br>count',...I(g=>g.timelyN)},{h:'On time<br>(PKR)',...I(g=>g.timelyAmt)},{h:'On time<br>% of recovered',...P(g=>div(g.timelyAmt,g.timelyAmt+g.overAmt))},
+  {h:'Late<br>count',...I(g=>g.overN)},{h:'Late<br>(PKR)',...I(g=>g.overAmt)},{h:'Late<br>% of recovered',...P(g=>div(g.overAmt,g.timelyAmt+g.overAmt)),heat:'o'}],
+ risk:[{h:'Loans',...I(g=>g.n),heat:'t'},{h:'Matured<br>(7d)',...I(g=>g.m7)},{h:'Default<br>7d %',...P(g=>div(g.d7,g.m7)),heat:'o'},{h:'Default<br>15d %',...P(g=>div(g.d15,g.m15)),heat:'o'},{h:'Default<br>30d %',...P(g=>div(g.d30,g.m30)),heat:'o'},
+  {h:'In arrears<br>loans',...I(g=>g.arrN)},{h:'Arrears<br>principal',...I(g=>g.arrPrin),heat:'t'},{h:'30+ DPD<br>principal',...I(g=>g.dpd30Prin)},{h:'Avg DPD<br>(arrears)',v:g=>div(g.dpdSum,g.dpdN),f:v=>v.toFixed(1)},
+  {h:'NPL<br>repayable',...I(g=>g.nplRepay)},{h:'NPL<br>recovered',...I(g=>g.nplRec)},{h:'NPL recovery<br>rate %',...P(g=>div(g.nplRec,g.nplRepay))}]};
+const bandView=(cols,first,grp,K,labels)=>host=>{const m=mask();const a=group(m,K,grp),t=total(m);if(!t.n){host.innerHTML=emptyHtml();CSV={head:[],rows:[],name:CSV.name};return;}table(host,labels,a,t,cols,first);};
+const bandLabels=Array.from({length:FB},(_,k)=>fLab(k));
+const FIRST_BAND='Loan amount (PKR)';
+function grid(host,cards){host.innerHTML='<div class="grid2">'+cards.join('')+'</div>';return plotsOf(host);}
+const bucketBars=(host,labels,vals,cols,fmtTip,name,o)=>{const tot=vals.reduce((a,b)=>a+b,0);
+ bars(host,labels.map((l,k)=>({l,v:[vals[k]],c:[cols[k]],tip:`<div class="k">${l}</div><div class="v">${num(vals[k])} loans</div><div class="k">${pc(div(vals[k],tot))} of ${name}</div>`})),Object.assign({series:[{n:'Loans',c:css('--s1')}],yFmt:money,values:true,vFmt:v=>pc(div(v,tot),0),sub:false,labW:50},o||{}));
+ CSV={head:['Bucket','Loans','Share'],rows:labels.map((l,k)=>[l,vals[k],pc(div(vals[k],tot))]),name:CSV.name};};
+/* ---- Disbursement ---- */
+const dView={
+ breakdown:{n:'Disbursement Breakdown',d:'Every loan disbursed, grouped by loan amount. Shows volume, ticket size, margin and borrower mix for each band.',f:bandView(bandCols.disb,FIRST_BAND,i=>fB[i],FB,bandLabels)},
+ trend:{n:'Disbursement Trend',d:'How much is being lent each day, by origination date.',f:host=>{
+  host.innerHTML=`<div class="cc wide"><h4>Daily disbursement <span class="seg" id="dm"></span></h4><p>Drag to zoom the whole dashboard into a date window.</p><div class="plot"></div></div>`;
+  const M=[['Loans',0],['Disbursed (PKR)',1],['Margin (PKR)',2]];const dm=host.querySelector('#dm');dm.innerHTML=M.map(([t,v])=>`<button data-v="${v}" aria-pressed="${v===dMetric}">${t}</button>`).join('');
+  dm.onclick=e=>{const b=e.target.closest('button');if(b){dMetric=+b.dataset.v;render();}};
+  const m=mask(['date']),arr=new Array(NDAY).fill(0);for(let i=0;i<N;i++)if(m[i]&&day[i]<NDAY)arr[day[i]]+=dMetric===0?1:dMetric===1?disb[i]:profit[i];
+  trend(host.querySelector('.plot'),arr,{name:M[dMetric][0],yFmt:dMetric===0?num:v=>(dMetric===0?'':'PKR ')+money(v)});
+  const l=[['Date','Loans','Disbursed (PKR)','Margin (PKR)']];const a1=new Array(NDAY).fill(0),a2=a1.slice(),a3=a1.slice();for(let i=0;i<N;i++)if(m[i]&&day[i]<NDAY){a1[day[i]]++;a2[day[i]]+=disb[i];a3[day[i]]+=profit[i];}
+  CSV={head:l[0],rows:a1.map((v,i)=>[dIso(i),v,a2[i],a3[i]]),name:CSV.name};}},
+ dist:{n:'Dist By Loan Amount',d:'Where the lending is concentrated. Bars show each loan-amount band, so you can see how much comes from small versus large tickets.',f:host=>{
+  host.innerHTML=`<div class="cc wide"><h4>Disbursement by loan amount <span class="seg" id="dd"></span></h4><p>Click a bar to filter everything to that size group.</p><div class="plot"></div></div>`;
+  const M=[['Disbursed (PKR)',0],['Loans',1]];const dd=host.querySelector('#dd');dd.innerHTML=M.map(([t,v])=>`<button data-v="${v}" aria-pressed="${v===dDist}">${t}</button>`).join('');dd.onclick=e=>{const b=e.target.closest('button');if(b){dDist=+b.dataset.v;render();}};
+  const m=mask(['amt']),a=group(m,FB,i=>fB[i]),T=a.reduce((x,g)=>x+(dDist?g.n:g.disb),0);let cum=0,half=null;
+  const items=a.map((g,k)=>{const v=dDist?g.n:g.disb;cum+=v;if(half==null&&cum>=T/2)half=k;return{l:k===FB-1?'40K+':((k+1)*2)+'K',v:[v],tip:`<div class="k">PKR ${fLab(k)}</div><div class="v">${dDist?num(g.n)+' loans':'PKR '+money(g.disb)}</div><div class="k">${pc(div(v,T))} of total · cumulative ${pc(div(cum,T))}</div>`,dim:S.amt!=null&&false};});
+  if(!T){plotsOf(host)[0].innerHTML=emptyHtml();return;}
+  items.forEach((it,k)=>{if(k<=half)it.c=[css('--s1')];else it.c=[css('--b1')];});
+  bars(plotsOf(host)[0],items,{series:[{n:dDist?'Loans':'Disbursed',c:css('--s1')}],yFmt:dDist?num:money,labW:34,click:k=>{const lo=k*2000+1,hi=(k+1)*2000;const ab=k<=1?0:null;toggleBand(k);}});
+  plotsOf(host)[0].insertAdjacentHTML('beforeend',`<div class="note">Darker bars together make up half of the total. Half of ${dDist?'all loans':'all disbursed principal'} sits at or below PKR ${((half+1)*2000).toLocaleString('en-US')}.</div>`);
+  CSV={head:['Loan amount (PKR)',dDist?'Loans':'Disbursed (PKR)','Share'],rows:a.map((g,k)=>[fLab(k).replace(/,/g,''),dDist?g.n:g.disb,pc(div(dDist?g.n:g.disb,T))]),name:CSV.name};}},
+ time:{n:'Time Bucket',d:'How fast loans reach borrowers after approval, and what time of the week they are requested.',f:host=>{
+  const [p1,p2]=grid(host,[card('Time from approval to disbursement','Share of loans by hours between decision and money sent.'),card('Demand heartbeat','Loans by weekday and hour of approval (local time).')]);
+  const m=mask(),B=[[1,'≤1h'],[3,'1–3h'],[6,'3–6h'],[12,'6–12h'],[24,'12–24h'],[1e9,'>24h']],vals=new Array(6).fill(0);
+  for(let i=0;i<N;i++)if(m[i]&&lagh[i]!==255){const h=lagh[i];let k=0;while(k<5&&h>B[k][0])k++;vals[k]++;}
+  bucketBars(p1,B.map(b=>b[1]),vals,[css('--s3'),css('--s3'),css('--s1'),css('--s4'),css('--s2'),css('--bad')],null,'disbursed loans',{h:250});
+  const c=Array.from({length:7},()=>new Array(24).fill(0));for(let i=0;i<N;i++)if(m[i])c[day[i]%7][hour[i]]++;const mxv=Math.max(...c.flat());
   const DN=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-  heat(id,DN,Array.from({length:24},(_,h)=>h%3===0?String(h).padStart(2,'0'):''),(r,j)=>({v:c[r][j]/mxv,txt:'',tip:`<div class="k">${DN[r]} ${String(j).padStart(2,'0')}:00–${String(j).padStart(2,'0')}:59</div><div class="v">${num(c[r][j])} loans</div>`}),{lw:40,ch:28,stops:BLU,rx:4,pt:22});
-  gradLegend(id,BLU,'0',num(mxv)+' loans in the busiest hour','Darker = busier');
-  const hr=new Array(24).fill(0);c.forEach(r=>r.forEach((v,j)=>hr[j]+=v));
-  table(id,['Hour',...DN],Array.from({length:24},(_,j)=>[String(j).padStart(2,'0')+':00',...c.map(r=>num(r[j]))]));
+  if(!mxv){p2.innerHTML=emptyHtml();return;}
+  heat(p2,DN,Array.from({length:24},(_,h)=>h%3===0?String(h).padStart(2,'0'):''),(r,j)=>({v:c[r][j]/mxv,tip:`<div class="k">${DN[r]} ${String(j).padStart(2,'0')}:00</div><div class="v">${num(c[r][j])} loans</div>`}),{lw:40,ch:28,stops:BLU,rx:4});
+  p2.insertAdjacentHTML('beforeend',gradLegend(BLU,'0',num(mxv)+' loans','Darker = busier'));
+  const hd=['Bucket','Loans'];CSV={head:hd,rows:B.map((b,k)=>[b[1],vals[k]]),name:CSV.name};}},
+ mix:{n:'Term & Borrower Mix',d:'Who we lend to and for how long: loan term distribution and borrower history.',f:host=>{
+  const [p1,p2]=grid(host,[card('Loans by term (days)','How many days borrowers have to repay.'),card('Borrower history','Disbursed principal and ticket by how many loans the borrower has taken.')]);
+  const m=mask(),tl=new Array(26).fill(0);for(let i=0;i<N;i++)if(m[i])tl[Math.min(37,Math.max(12,term[i]))-12]++;
+  bars(p1,tl.map((v,k)=>({l:k===25?'37+':String(k+12),v:[v],tip:`<div class="k">${k===25?'37+ days':(k+12)+' days'}</div><div class="v">${num(v)} loans</div>`})),{series:[{n:'Loans',c:css('--s1')}],yFmt:money,labW:26,h:250});
+  const mt=mask(['ten']),a=group(mt,5,i=>nB[i]),t=total(mt);if(!t.n){p2.innerHTML=emptyHtml();return;}
+  table(p2,L.ten,a,t,[{h:'Loans',...I(g=>g.n),heat:'t'},{h:'Disbursed<br>(PKR)',...I(g=>g.disb),heat:'t'},{h:'Avg<br>ticket',...I(g=>div(g.disb,g.n))},{h:'Margin<br>%',...P(g=>div(g.profit,g.disb))},{h:'Default<br>7d %',...P(g=>div(g.d7,g.m7)),heat:'o'}],'Borrower history');
+  p2.querySelector('.tw').style.minHeight='0';p2.querySelector('.tw').style.maxHeight='none';
+  const rows=CSV.rows,head=CSV.head;CSV={head:['Section','Item','Loans'],rows:[...tl.map((v,k)=>['Term',k===25?'37+':k+12,v]),...rows.map(r=>['Borrower history',r[0],r[1]])],name:CSV.name};}}
+};
+let dMetric=1,dDist=0;
+function toggleBand(k){/* amount bands are finer than the filter, so map to the nearest coarse band */const lo=k*2000+1;const ab=lo<5000?0:lo<10000?1:lo<20000?2:lo<30000?3:4;toggleF('amt',ab);}
+/* ---- Recovery ---- */
+const rView={
+ breakdown:{n:'Recovery Breakdown',d:'For loans already past their due date: how much was recovered, how much came in on time versus late, and what was recovered from non-performing loans (NPL).',f:bandView(bandCols.rec,FIRST_BAND,i=>fB[i],FB,bandLabels)},
+ trend:{n:'Recovery Trend',d:'Cash recovered each day by paid date, split into on-time (paid on or before due date) and late payments.',f:host=>{
+  host.innerHTML=`<div class="cc wide"><h4>Recovered amount by paid date</h4><p>Stacked: on-time and late.</p><div class="plot"></div></div>`;
+  const m=mask(),a=Array.from({length:ASOF+3},()=>[0,0]);for(let i=0;i<N;i++)if(m[i]&&paid[i]!==255&&rec[i]>0){const k=paid[i];if(k<a.length)a[k][paid[i]<=due[i]?0:1]+=rec[i];}
+  const first=a.findIndex(z=>z[0]+z[1]>0);if(first<0){plotsOf(host)[0].innerHTML=emptyHtml();return;}
+  const T=a.reduce((x,z)=>x+z[0]+z[1],0);
+  bars(plotsOf(host)[0],a.map((z,k)=>({l:dFmt(k),v:[z[0],z[1]],tip:`<div class="k">Paid ${dFmt(k)}</div>`+trow(css('--s3'),'on time','PKR '+money(z[0]))+trow(css('--bad'),'late','PKR '+money(z[1]))})),{series:[{n:'On time',c:css('--s3')},{n:'Late',c:css('--bad')}],stacked:true,yFmt:money,labW:46,h:300});
+  CSV={head:['Paid date','On time (PKR)','Late (PKR)'],rows:a.map((z,k)=>[dIso(k),z[0],z[1]]),name:CSV.name};}},
+ rate:{n:'Recovery Rate',d:'Recovered amount as a share of what was due, and how much of it arrived on time. Pick a dimension to compare.',f:host=>{
+  host.innerHTML=`<div class="cc wide"><h4>Recovery rate by <span class="seg" id="rd"></span></h4><p>Only loans past their due date. Click a bar to filter.</p><div class="plot"></div></div>`;
+  const D=[['Loan size',aB,5,L.amt,'amt'],['Term',tB,4,L.term,'term'],['Borrower history',nB,5,L.ten,'ten']];const rd=host.querySelector('#rd');
+  rd.innerHTML=D.map((d,i)=>`<button data-v="${i}" aria-pressed="${i===rDim}">${d[0]}</button>`).join('');rd.onclick=e=>{const b=e.target.closest('button');if(b){rDim=+b.dataset.v;render();}};
+  const d=D[rDim],m=mask([d[4]]),a=group(m,d[2],i=>d[1][i]);if(!a.reduce((x,g)=>x+g.due,0)){plotsOf(host)[0].innerHTML=emptyHtml();return;}
+  bars(plotsOf(host)[0],a.map((g,k)=>({l:d[3][k],v:[div(g.recDue,g.repayDue),div(g.timelyAmt,g.timelyAmt+g.overAmt)],dim:S[d[4]]!=null&&S[d[4]]!==k,tip:`<div class="k">${d[3][k]} · ${num(g.due)} due loans</div>`+trow(css('--s1'),'recovery rate',pc(div(g.recDue,g.repayDue)))+trow(css('--s3'),'on-time share of recovered',pc(div(g.timelyAmt,g.timelyAmt+g.overAmt)))})),
+   {series:[{n:'Recovery rate',c:css('--s1')},{n:'On-time share of recovered',c:css('--s3')}],yFmt:v=>pc(v,0),vFmt:v=>pc(v,0),values:true,labW:70,h:290,click:k=>toggleF(d[4],k)});
+  CSV={head:[d[0],'Due loans','Recovery rate','On-time share'],rows:a.map((g,k)=>[d[3][k],g.due,pc(div(g.recDue,g.repayDue)),pc(div(g.timelyAmt,g.timelyAmt+g.overAmt))]),name:CSV.name};}},
+ dist:{n:'Dist By Loan Amount',d:'For every loan-amount band, the amount that was due against the amount recovered.',f:host=>{
+  host.innerHTML=`<div class="cc wide"><h4>Due versus recovered by loan amount</h4><p>Loans past their due date only.</p><div class="plot"></div></div>`;
+  const m=mask(),a=group(m,FB,i=>fB[i]);if(!a.reduce((x,g)=>x+g.due,0)){plotsOf(host)[0].innerHTML=emptyHtml();return;}
+  bars(plotsOf(host)[0],a.map((g,k)=>({l:k===FB-1?'40K+':((k+1)*2)+'K',v:[g.repayDue,g.recDue],tip:`<div class="k">PKR ${fLab(k)}</div>`+trow(css('--b1'),'due','PKR '+money(g.repayDue))+trow(css('--s3'),'recovered','PKR '+money(g.recDue))+`<div class="k">${pc(div(g.recDue,g.repayDue))} recovery rate</div>`})),
+   {series:[{n:'Due (PKR)',c:css('--b1')},{n:'Recovered (PKR)',c:css('--s3')}],yFmt:money,labW:34,h:300});
+  CSV={head:['Loan amount (PKR)','Due (PKR)','Recovered (PKR)','Rate'],rows:a.map((g,k)=>[fLab(k).replace(/,/g,''),g.repayDue,g.recDue,pc(div(g.recDue,g.repayDue))]),name:CSV.name};}},
+ time:{n:'Time Bucket',d:'How early or late borrowers pay, measured against the due date. Green is on time, red is late.',f:host=>{
+  host.innerHTML=`<div class="cc wide"><h4>Payment timing versus due date</h4><p>Loans with a recorded payment.</p><div class="plot"></div></div>`;
+  const B=[['15+ days early',d=>d>=15],['8–14 early',d=>d>=8&&d<15],['1–7 early',d=>d>=1&&d<8],['On due day',d=>d===0],['1–7 late',d=>d<0&&d>=-7],['8–14 late',d=>d<-7&&d>=-14],['15–30 late',d=>d<-14&&d>=-30],['30+ late',d=>d<-30]];
+  const m=mask(),vals=new Array(8).fill(0);for(let i=0;i<N;i++)if(m[i]&&paid[i]!==255){const d=due[i]-paid[i];const k=B.findIndex(b=>b[1](d));if(k>=0)vals[k]++;}
+  bucketBars(plotsOf(host)[0],B.map(b=>b[0]),vals,[css('--good'),css('--good'),css('--s3'),css('--s1'),css('--s4'),css('--s2'),css('--badtext'),css('--bad')],null,'paid loans',{h:300});CSV.name='recovery-time-bucket';}},
+ cohort:{n:'Cohort Analysis',d:'Each row is a week of originations. See how much of what was due has come back, and how much of it came in late.',f:host=>{
+  const W=Math.ceil(NDAY/7),m=mask(['date']),a=group(m,W,i=>(day[i]/7)|0),t=total(m);if(!t.n){host.innerHTML=emptyHtml();return;}
+  table(host,a.map((_,w)=>`Week of ${dFmt(w*7)}`),a,t,[{h:'Loans',...I(g=>g.n),heat:'t'},{h:'Due<br>loans',...I(g=>g.due)},{h:'Repayable<br>due (PKR)',...I(g=>g.repayDue)},{h:'Recovered<br>(PKR)',...I(g=>g.recDue),heat:'t'},{h:'Recovery<br>rate %',...P(g=>g.due>=g.n*.9?div(g.recDue,g.repayDue):null),heat:'t'},
+   {h:'Late<br>% of recovered',...P(g=>div(g.overAmt,g.timelyAmt+g.overAmt)),heat:'o'},{h:'NPL<br>(30d) %',...P(g=>g.m30>=g.n*.9?div(g.d30,g.m30):null),heat:'o'}],'Origination cohort');
+  host.insertAdjacentHTML('beforeend','<div class="note">Rates are shown only once at least 90% of a cohort is past due (and, for NPL, past due plus 30 days), so young cohorts are not flattered.</div>');}}
+};
+let rDim=0;
+/* ---- Default risk ---- */
+const kView={
+ breakdown:{n:'Default Breakdown',d:'Default and arrears picture by loan amount. Default rates only count loans old enough to have had the chance to default.',f:bandView(bandCols.risk,FIRST_BAND,i=>fB[i],FB,bandLabels)},
+ aging:{n:'Aging Ladder',d:'How much principal sits in each days-past-due bucket. Click a bar to filter.',f:host=>{
+  host.innerHTML=`<div class="cc wide"><h4>Principal by days past due</h4><p>DPD 0 (on time) is excluded from the chart so the late buckets stay readable.</p><div class="plot"></div></div>`;
+  const m=mask(['dpd']),a=group(m,6,i=>dpd[i]),T=a.reduce((x,g)=>x+g.amt,0);if(!T){plotsOf(host)[0].innerHTML=emptyHtml();return;}
+  bars(plotsOf(host)[0],[1,2,3,4,5].map(k=>({l:L.dpd[k],l2:pc(div(a[k].amt,T)),v:[a[k].amt],c:[rgb(ramp(HEAT,.2+(k-1)*.2))],dim:S.dpd!=null&&S.dpd!==k,tip:`<div class="k">${L.dpd[k]}</div><div class="v">PKR ${money(a[k].amt)}</div><div class="k">${num(a[k].n)} loans · ${pc(div(a[k].amt,T))} of principal</div>`})),
+   {series:[{n:'Principal',c:css('--h3')}],yFmt:money,values:true,sub:true,h:300,labW:60,click:k=>toggleF('dpd',k+1)});
+  plotsOf(host)[0].insertAdjacentHTML('beforeend',`<div class="note">On time (DPD 0): PKR ${money(a[0].amt)}, ${pc(div(a[0].amt,T))} of principal in view.</div>`);
+  CSV={head:['DPD bucket','Loans','Principal (PKR)','Share'],rows:a.map((g,k)=>[L.dpd[k],g.n,g.amt,pc(div(g.amt,T))]),name:CSV.name};}},
+ vintage:{n:'Vintage Curves',d:'Default rate for each weekly batch of loans, measured at 7, 15 and 30 days past due.',f:host=>{
+  host.innerHTML=`<div class="cc wide"><h4>Default rate by origination week</h4><p>A cohort appears only once 90% of its loans have passed that horizon.</p><div class="plot"></div></div>`;vintage(plotsOf(host)[0]);}},
+ map:{n:'Risk Map',d:'Where default concentrates: loan size against term. Click a cell to filter.',f:host=>{
+  host.innerHTML=`<div class="cc wide"><h4>7-day default rate by loan size and term</h4><p>Darker means more loans were still unpaid a week after the due date.</p><div class="plot"></div></div>`;
+  const el=plotsOf(host)[0],m=mask(['amt','term']),c=Array.from({length:20},()=>[0,0]);for(let i=0;i<N;i++)if(m[i]&&((fl[i]>>3)&1)){const k=c[aB[i]*4+tB[i]];k[0]++;k[1]+=fl[i]&1;}
+  const rates=c.map(x=>x[0]>=30?x[1]/x[0]:null),mxv=Math.max(0,...rates.filter(x=>x!=null));if(!mxv){el.innerHTML=emptyHtml();return;}const top=Math.max(.3,mxv);
+  heat(el,L.amt,L.term,(r,j)=>{const k=r*4+j,v=rates[k],sel=S.amt===r&&S.term===j;return{v:v==null?null:v/top,txt:v==null?'–':(v*100).toFixed(0)+'%',hot:true,sel,dim:(S.amt!=null||S.term!=null)&&!((S.amt==null||S.amt===r)&&(S.term==null||S.term===j)),tip:`<div class="k">${L.amt[r]} · ${L.term[j]}</div><div class="v">${pc(v)}</div><div class="k">${num(c[k][0])} loans matured at 7 days</div>`};},
+   {lw:64,ch:56,stops:HEAT,tf:14,click:(r,j)=>{if(S.amt===r&&S.term===j){S.amt=null;S.term=null;}else{S.amt=r;S.term=j;}render();}});
+  el.insertAdjacentHTML('beforeend',gradLegend(HEAT,'0%',(top*100).toFixed(0)+'% defaulted by day 7','Rows: loan size (PKR). Columns: term'));
+  CSV={head:['Loan size',...L.term],rows:L.amt.map((a,r)=>[a,...L.term.map((t,j)=>pc(rates[r*4+j],0))]),name:CSV.name};}},
+ borrower:{n:'Borrower Risk',d:'The first-loan cliff: how default risk drops once a borrower has repaid before. Click a group to filter.',f:host=>{
+  const [p1,p2]=grid(host,[card('Default rate by borrower history','7-day and 30-day, loans past the horizon only.'),card('Detail by borrower history','')]);
+  const m=mask(['ten']),a=group(m,5,i=>nB[i]),t=total(m);if(!t.n){p1.innerHTML=emptyHtml();p2.innerHTML=emptyHtml();return;}
+  bars(p1,a.map((g,k)=>({l:L.ten[k].split(' ')[0],l2:L.ten[k].split(' ').slice(1).join(' ')||'loan',v:[div(g.d7,g.m7),div(g.d30,g.m30)],dim:S.ten!=null&&S.ten!==k,tip:`<div class="k">${L.ten[k]}</div>`+trow(css('--s2'),'7-day default',pc(div(g.d7,g.m7)))+trow(css('--s1'),'30-day default',pc(div(g.d30,g.m30)))})),
+   {series:[{n:'7-day default',c:css('--s2')},{n:'30-day default',c:css('--s1')}],yFmt:v=>pc(v,0),vFmt:v=>pc(v,v<.1?1:0),values:true,sub:true,h:270,labW:60,click:k=>toggleF('ten',k)});
+  table(p2,L.ten,a,t,[{h:'Loans',...I(g=>g.n),heat:'t'},{h:'Default<br>7d %',...P(g=>div(g.d7,g.m7)),heat:'o'},{h:'Default<br>30d %',...P(g=>div(g.d30,g.m30)),heat:'o'},{h:'Arrears<br>principal',...I(g=>g.arrPrin)},{h:'NPL recovery<br>rate %',...P(g=>div(g.nplRec,g.nplRepay))}],'Borrower history');
+  const tw=p2.querySelector('.tw');tw.style.minHeight='0';tw.style.maxHeight='none';}}
+};
+function vintage(el){
+ const w=vw(el),h=300,pl=44,pr=64,pt=12,pb=26,m=mask(['date']),W=Math.ceil(NDAY/7),a=Array.from({length:W},()=>[0,0,0,0,0,0,0]);
+ for(let i=0;i<N;i++)if(m[i]){const f=fl[i],o=a[(day[i]/7)|0];o[6]++;if((f>>3)&1){o[0]++;o[1]+=f&1;}if((f>>4)&1){o[2]++;o[3]+=(f>>1)&1;}if((f>>5)&1){o[4]++;o[5]+=(f>>2)&1;}}
+ const ser=[{n:'7-day',k:0,c:css('--s1')},{n:'15-day',k:2,c:css('--s2')},{n:'30-day',k:4,c:css('--s3')}];let mxv=0;
+ ser.forEach(s=>{s.v=a.map(o=>o[s.k]>=200&&o[s.k]/o[6]>=.9?o[s.k+1]/o[s.k]:null);s.v.forEach(x=>{if(x!=null)mxv=Math.max(mxv,x);});});
+ if(!mxv){el.innerHTML=emptyHtml('No cohort is old enough in the current filters.');return;}
+ const mx=scale(mxv*1.05).max,iw=w-pl-pr,ih=h-pt-pb,x=i=>pl+iw*(i+.5)/W,y=v=>pt+ih-(v/mx)*ih;let g='';
+ ticks(mx).forEach(t=>g+=`<line x1="${pl}" x2="${w-pr}" y1="${y(t)}" y2="${y(t)}" stroke="${css('--grid')}"/><text x="${pl-7}" y="${y(t)+4}" text-anchor="end" font-size="11" fill="${css('--muted')}">${pc(t,0)}</text>`);
+ let xl='';for(let i=0;i<W;i+=2)xl+=`<text x="${x(i)}" y="${h-7}" text-anchor="middle" font-size="11" fill="${css('--muted')}">${dFmt(i*7)}</text>`;
+ let paths='',dots='',labs=[];ser.forEach(s=>{let d='',pen=false;s.v.forEach((v,i)=>{if(v==null){pen=false;return;}d+=(pen?'L':'M')+x(i).toFixed(1)+' '+y(v).toFixed(1);pen=true;});
+  paths+=`<path d="${d}" fill="none" stroke="${s.c}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+  s.v.forEach((v,i)=>{if(v!=null)dots+=`<circle cx="${x(i)}" cy="${y(v)}" r="4" fill="${s.c}" stroke="#fff" stroke-width="2"/>`;});let li=-1;s.v.forEach((v,i)=>{if(v!=null)li=i;});if(li>=0)labs.push({y:y(s.v[li]),x:x(li),t:s.n});});
+ labs.sort((p,q)=>p.y-q.y);for(let i=1;i<labs.length;i++)if(labs[i].y-labs[i-1].y<14)labs[i].y=labs[i-1].y+14;
+ el.innerHTML=`<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" data-live="1"><line x1="${pl}" x2="${w-pr}" y1="${pt+ih}" y2="${pt+ih}" stroke="${css('--axis')}"/>${g}${xl}${paths}${dots}${labs.map(l=>`<text x="${l.x+9}" y="${l.y+4}" font-size="12" font-weight="650" fill="${css('--ink')}">${l.t}</text>`).join('')}<line id="vx" y1="${pt}" y2="${pt+ih}" stroke="${css('--ink2')}" visibility="hidden"/><rect id="vo" x="${pl}" y="${pt}" width="${iw}" height="${ih}" fill="transparent"/></svg>`+legendHtml(ser.map(s=>({c:s.c,t:s.n+' default',ln:1})));
+ const svg=el.querySelector('svg'),ov=svg.querySelector('#vo'),vx=svg.querySelector('#vx');
+ ov.addEventListener('pointermove',e=>{const i=Math.max(0,Math.min(W-1,Math.floor((e.clientX-svg.getBoundingClientRect().left-pl)/(iw/W))));vx.setAttribute('x1',x(i));vx.setAttribute('x2',x(i));vx.setAttribute('visibility','visible');
+  showTip(`<div class="k">Cohort of ${dFmt(i*7)}</div>`+ser.map(s=>trow(s.c,s.n+' default'+(s.v[i]==null?'':' ('+num(a[i][s.k])+' loans)'),s.v[i]==null?'<span class="k">not yet mature</span>':pc(s.v[i]))).join(''),e.clientX,e.clientY);});
+ ov.addEventListener('pointerleave',()=>{vx.setAttribute('visibility','hidden');hideTip();});
+ CSV={head:['Cohort week','7-day default','15-day default','30-day default'],rows:a.map((o,i)=>[dFmt(i*7),...ser.map(s=>s.v[i]==null?'':pc(s.v[i]))]),name:CSV.name};
 }
-/* ---------- filters UI ---------- */
-function mkChips(id,dim){const el=document.getElementById(id);el.innerHTML=L[dim].map((t,k)=>`<button class="chip" data-k="${k}" aria-pressed="false">${t}</button>`).join('');
-  el.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;const k=+b.dataset.k;S[dim].has(k)?S[dim].delete(k):S[dim].add(k);render();};}
-function mkSeg(id,key){const el=document.getElementById(id);el.innerHTML=[['Any',null],['Yes',1],['No',0]].map(([t,v])=>`<button data-v="${v}" aria-pressed="false">${t}</button>`).join('');
-  el.onclick=e=>{const b=e.target.closest('button');if(!b)return;const v=b.dataset.v==='null'?null:+b.dataset.v;S[key]=v;render();};}
-const PRE=[['All',NDAY],['Last 30d',30],['Last 14d',14],['Last 7d',7]];
-document.getElementById('presets').innerHTML=PRE.map(([t,n])=>`<button class="chip" data-n="${n}" aria-pressed="false">${t}</button>`).join('');
-document.getElementById('presets').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;const n=+b.dataset.n;S.to=NDAY-1;S.from=Math.max(0,NDAY-n);render();};
-mkChips('f-st','st');mkChips('f-dpd','dpd');mkChips('f-amt','amt');mkChips('f-term','term');mkChips('f-ten','ten');mkSeg('f-slider','slider');mkSeg('f-cool','cool');
-const dF=document.getElementById('dFrom'),dT=document.getElementById('dTo');
-dF.min=dT.min=dIso(0);dF.max=dT.max=dIso(NDAY-1);
-dF.onchange=()=>{if(dF.value){S.from=Math.max(0,Math.min(isoDay(dF.value),S.to));render();}};
-dT.onchange=()=>{if(dT.value){S.to=Math.min(NDAY-1,Math.max(isoDay(dT.value),S.from));render();}};
-document.getElementById('reset').onclick=()=>{S=blank();render();};
-const themeBtn=document.getElementById('theme');
-function themeLabel(){themeBtn.textContent='Theme: '+(document.documentElement.dataset.theme||'auto');}
-themeBtn.onclick=()=>{const cur=document.documentElement.dataset.theme;const sysDark=matchMedia('(prefers-color-scheme: dark)').matches;const eff=cur||(sysDark?'dark':'light');const nx=eff==='dark'?'light':'dark';document.documentElement.dataset.theme=nx;try{localStorage.setItem('nl-theme',nx)}catch(e){}themeLabel();render();};
-matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>render());
-document.getElementById('pulseMetric').innerHTML=[['Loans',0],['Principal',1],['Margin',2]].map(([t,v])=>`<button data-v="${v}" aria-pressed="${v===0}">${t}</button>`).join('');
-document.getElementById('pulseMetric').onclick=e=>{const b=e.target.closest('button');if(!b)return;pulseMetric=+b.dataset.v;render();};
-document.querySelectorAll('.tblbtn').forEach(b=>b.onclick=()=>{const c=b.closest('.card');const on=c.classList.toggle('show-table');b.textContent=on?'Chart':'Table';});
-/* ---------- active filters ---------- */
-function active(){const a=[];const f=S;
-  if(f.from!==0||f.to!==NDAY-1)a.push({t:'Originated '+dFmt(f.from)+' – '+dFmt(f.to),x:()=>{f.from=0;f.to=NDAY-1;}});
-  DIMS.forEach(d=>f[d].forEach(k=>a.push({t:L[d][k],x:()=>f[d].delete(k)})));
-  if(f.slider!==null)a.push({t:'Slider '+(f.slider?'used':'not used'),x:()=>f.slider=null});
-  if(f.cool!==null)a.push({t:'Cool-off '+(f.cool?'yes':'no'),x:()=>f.cool=null});
-  return a;}
-function renderChrome(){
-  const a=active(),p=document.getElementById('pills');
-  p.innerHTML=a.length?a.map((x,i)=>`<span class="pill">${x.t}<button data-i="${i}" aria-label="Remove ${x.t}">×</button></span>`).join('')+'<span class="pill clear" id="clr" role="button" tabindex="0">Clear all</span>':'<span class="nofilt">Showing the whole book. Click any chart, or use the filters, to slice it.</span>';
-  p.querySelectorAll('button').forEach(b=>b.onclick=()=>{a[+b.dataset.i].x();render();});
-  const c=document.getElementById('clr');if(c){c.onclick=()=>{S=blank();render();};c.onkeydown=e=>{if(e.key==='Enter'){S=blank();render();}};}
-  DIMS.forEach(d=>document.querySelectorAll('#f-'+d+' .chip').forEach(b=>b.setAttribute('aria-pressed',S[d].has(+b.dataset.k))));
-  ['slider','cool'].forEach(k=>document.querySelectorAll('#f-'+k+' button').forEach(b=>b.setAttribute('aria-pressed',String(S[k])===b.dataset.v)));
-  document.querySelectorAll('#pulseMetric button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.v===pulseMetric));
-  document.querySelectorAll('#presets .chip').forEach(b=>{const n=+b.dataset.n;b.setAttribute('aria-pressed',S.to===NDAY-1&&S.from===Math.max(0,NDAY-n));});
-  dF.value=dIso(S.from);dT.value=dIso(S.to);
-  document.getElementById('dateTxt').textContent=(S.to-S.from+1)+' days';
-  const n=document.getElementById('rowTxt');n.textContent=num(mask().reduce((a,b)=>a+b,0))+' of '+num(N)+' loans in view';
+/* =============== TABS, KPIs, FILTERS =============== */
+const TABS={
+ disbursement:{name:'Disbursement',views:dView,order:['breakdown','trend','dist','time','mix'],kpi:()=>{const t=total(mask());return[
+  ['Disbursed amount','PKR '+num(t.disb),num(t.n)+' loans'],['Average ticket','PKR '+num(div(t.disb,t.n)||0),'avg term '+(div(t.termSum,t.n)||0).toFixed(1)+' days'],
+  ['Margin earned','PKR '+num(t.profit),pc(div(t.profit,t.disb))+' of disbursed'],['Repeat borrowers',pc(div(t.rep,t.n)),num(t.rep)+' loans'],['Disbursed within 3 hours',pc(div(t.fast,t.soldN)),num(t.fast)+' loans']];}},
+ recovery:{name:'Recovery',views:rView,order:['breakdown','trend','rate','dist','time','cohort'],kpi:()=>{const t=total(mask());return[
+  ['Recovered amount','PKR '+num(t.recDue),num(t.recN)+' loans'],['Recovery rate',pc(div(t.recDue,t.repayDue)),'of PKR '+money(t.repayDue)+' due'],
+  ['On-time recovery','PKR '+num(t.timelyAmt),num(t.timelyN)+' loans'],['Late recovery','PKR '+num(t.overAmt),num(t.overN)+' loans'],['NPL recovery','PKR '+num(t.nplRec),num(t.nplClosed)+' NPL loans closed']];}},
+ risk:{name:'Default Risk',views:kView,order:['breakdown','aging','vintage','map','borrower'],kpi:()=>{const t=total(mask());return[
+  ['7-day default rate',pc(div(t.d7,t.m7)),num(t.m7)+' matured loans'],['30-day default (NPL) rate',pc(div(t.d30,t.m30)),num(t.m30)+' matured loans'],
+  ['Principal in arrears','PKR '+num(t.arrPrin),num(t.arrN)+' loans'],['Principal 30+ days late','PKR '+num(t.dpd30Prin),num(t.dpd30N)+' loans'],['NPL recovery rate',pc(div(t.nplRec,t.nplRepay)),'PKR '+money(t.nplRec)+' recovered']];}}
+};
+const FILTERS=[['term','Term',L.term],['amt','Loan size (PKR)',L.amt],['ten','Borrower',L.ten],['st','Status',L.st],['dpd','Days past due',L.dpd]];
+function buildFilters(){
+ const el=document.getElementById('filters');
+ el.innerHTML=FILTERS.map(([k,l,o])=>`<label class="f">${l}<select id="f-${k}"><option value="">All</option>${o.map((t,i)=>`<option value="${i}">${t}</option>`).join('')}</select></label>`).join('')+
+  `<label class="f">Slider<select id="f-slider"><option value="">Any</option><option value="1">Used</option><option value="0">Not used</option></select></label>
+   <div class="f">Originated<div class="pair"><input type="date" id="dFrom" aria-label="Originated from"><input type="date" id="dTo" aria-label="Originated to"></div></div>
+   <div class="f" id="pf" hidden>Paid date<div class="pair"><input type="date" id="pFrom" aria-label="Paid from"><input type="date" id="pTo" aria-label="Paid to"></div></div>
+   <div class="fgrow"><button class="fbtn" id="clr">Clear filters</button><button class="fbtn dl" id="dl" aria-label="Download this table as CSV">Download CSV</button></div>`;
+ [...FILTERS.map(f=>f[0]),'slider'].forEach(k=>document.getElementById('f-'+k).onchange=e=>{S[k]=e.target.value===''?null:+e.target.value;render();});
+ const dF=document.getElementById('dFrom'),dT=document.getElementById('dTo'),pF=document.getElementById('pFrom'),pT=document.getElementById('pTo');
+ dF.min=dT.min=pF.min=pT.min=dIso(0);dF.max=dT.max=dIso(NDAY-1);pF.max=pT.max=dIso(ASOF);
+ dF.onchange=()=>{if(dF.value){S.from=Math.max(0,Math.min(isoDay(dF.value),S.to));render();}};
+ dT.onchange=()=>{if(dT.value){S.to=Math.min(NDAY-1,Math.max(isoDay(dT.value),S.from));render();}};
+ const pset=()=>{const a=pF.value?isoDay(pF.value):0,b=pT.value?isoDay(pT.value):ASOF;if(!pF.value&&!pT.value){S.pfrom=S.pto=null;}else{S.pfrom=Math.min(a,b);S.pto=Math.max(a,b);}render();};
+ pF.onchange=pset;pT.onchange=pset;
+ document.getElementById('clr').onclick=()=>{S=blank();render();};
+ document.getElementById('dl').onclick=downloadCsv;
 }
-/* ---------- render loop ---------- */
+function downloadCsv(){if(!CSV.head.length)return;const q=v=>{v=String(v==null?'':v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;};
+ const txt=[CSV.head,...CSV.rows].map(r=>r.map(q).join(',')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'text/csv'}));
+ a.download=(CSV.name||'export')+'.csv';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},0);}
+function syncFilters(){
+ FILTERS.forEach(([k])=>document.getElementById('f-'+k).value=S[k]==null?'':S[k]);document.getElementById('f-slider').value=S.slider==null?'':S.slider;
+ document.getElementById('dFrom').value=dIso(S.from);document.getElementById('dTo').value=dIso(S.to);
+ document.getElementById('pf').hidden=tab!=='recovery';document.getElementById('pFrom').value=S.pfrom==null?'':dIso(S.pfrom);document.getElementById('pTo').value=S.pto==null?'':dIso(S.pto);
+}
+function renderNav(){
+ const T=TABS[tab];document.getElementById('tabs').innerHTML=Object.entries(TABS).map(([k,v])=>`<button class="tab" role="tab" data-k="${k}" aria-selected="${k===tab}">${v.name}</button>`).join('');
+ document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{tab=b.dataset.k;try{history.replaceState(null,'','#'+tab+'/'+viewId[tab]);}catch(e){}render();});
+ document.getElementById('menu').innerHTML=T.order.map(k=>`<button class="mi" role="tab" data-k="${k}" aria-selected="${k===viewId[tab]}">${T.views[k].n}</button>`).join('');
+ document.querySelectorAll('.mi').forEach(b=>b.onclick=()=>{viewId[tab]=b.dataset.k;try{history.replaceState(null,'','#'+tab+'/'+viewId[tab]);}catch(e){}render();});
+}
+function renderKpis(){document.getElementById('kpis').innerHTML=TABS[tab].kpi().map(k=>`<div class="kg"><div class="kh">${k[0]}</div><div class="kb"><div class="v">${k[1]}</div><div class="v2">${k[2]}</div></div></div>`).join('');}
+function renderView(){
+ const v=TABS[tab].views[viewId[tab]],host=document.getElementById('view');
+ document.getElementById('vt').textContent=v.n;document.getElementById('vd').textContent=v.d;
+ CSV={head:[],rows:[],name:(tab+'-'+viewId[tab])};v.f(host);CSV.name=tab+'-'+viewId[tab];
+}
 let raf=0;
-function render(){cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{mcache={};hideTip();themeLabel();
-  renderChrome();renderKpis();renderInsights();renderPulse();renderStatus();renderVintage();renderCliff();renderRisk();renderDpd();renderRunway();renderLevers();renderHeart();});}
+function render(){cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{mcache={};hideTip();renderNav();syncFilters();
+ const n=mask().reduce((a,b)=>a+b,0);document.getElementById('rowTxt').textContent=num(n)+' of '+num(N)+' loans in view';renderKpis();renderView();});}
+function readHash(){try{const h=location.hash.slice(1).split('/');if(TABS[h[0]]){tab=h[0];if(h[1]&&TABS[tab].views[h[1]])viewId[tab]=h[1];}}catch(e){}}
+readHash();addEventListener('hashchange',()=>{readHash();render();});
+buildFilters();
 let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(render,120);});
 render();
 })();
